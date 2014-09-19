@@ -20,11 +20,37 @@ body {display:table;}
     	<h2><img src="{{STATIC_URL}}polls/admin-logo.png" alt=""/></h2>
         <div class="containerpaneldiv">
 		{% for question in questions %}
-				<li>Welcome to Vorg</li>
+				Welcome to VORG....
+				</div>
 			{% empty %}
-				<li>Invalid</li>
+				<div class="containerpaneldiv">
+				<form action="/home/auth/" method="post" accept-charset="utf-8">
+				{% csrf_token %}
+					<div class="loginhgtdiv">
+						<label for="username">User Name</label>
+						<input type="text" value="" name="Username" id="username"/>
+					</div>
+					
+					<div class="loginhgtdiv">
+						<label for="password">Password</label>
+						<input type="Password" value="" name="Password" id="password"/>
+					</div>
+					
+					<div class="loginhgtdiv">
+						<div class="rembmebrrpanl">
+							<input type="checkbox" />
+							<span class="remberspan">Remember Password</span>
+						</div>
+						<input type="submit" value="login" name="submit" />
+						<div class="clear"></div>
+					</div>
+				</form>
+				</div>
+				<div class="footerdiv">
+					<a href="#">Fogot your Password?</a>
+				</div>
 			{% endfor %}
-        </div>
+        
         
     </section>
     <!--admin login panel div end here-->
