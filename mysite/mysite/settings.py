@@ -82,7 +82,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+SESSION_COOKIE_AGE = 360
+KEEP_LOGGED_KEY                   = 'TRUE' # session key
+KEEP_LOGGED_DURATION              = 365         # in days
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
