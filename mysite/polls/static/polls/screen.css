@@ -2,9 +2,11 @@
 /* =============================================================================
    Global HTML / Body
    ========================================================================== */
-html {	height:100%;	-webkit-font-smoothing:antialiased;	margin:0;	padding:0;	border:0;/*overflow-y:scroll;*/	font-size:11px;}
+html {	height:100%; -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;	margin:0;	padding:0;	border:0;/*overflow-y:scroll;*/	font-size:11px;}
 body {	background:#ffffff;	height:100%; font:1.08em/1em Arial, Helvetica, sans-serif;	color:#666;	margin:0;	padding:0;	border:0;}
 
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+*:before, *:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 
 /* =============================================================================
    Global Login
@@ -43,7 +45,8 @@ body {	background:#ffffff;	height:100%; font:1.08em/1em Arial, Helvetica, sans-s
 .adminloginpanel {width:524px; margin:0 auto 0; background-color:#000;  box-shadow: 2px 2px 10px #c7c7c7;
         -o-box-shadow: 2px 2px 10px #c7c7c7;
         -webkit-box-shadow: 2px 2px 10px #c7c7c7;
-        -moz-box-shadow: 2px 2px 10px #c7c7c7; filter:
+        -moz-box-shadow: 2px 2px 10px #c7c7c7; 
+		filter:
             progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=1, Color=#C4C4C4),
             progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=90, Color=#C4C4C4),
             progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=180, Color=#C4C4C4),
@@ -66,3 +69,145 @@ body {	background:#ffffff;	height:100%; font:1.08em/1em Arial, Helvetica, sans-s
 .adminloginpanel .footerdiv {border-top:1px solid #ebebeb; background-color:#f9f9f9; text-align:center; height:47px;}
 .adminloginpanel .footerdiv a {font-family:'opensansregularregular'; font-size:12px; color:#868686; line-height:47px;}
 .adminloginpanel .footerdiv a:hover {text-decoration:underline;}
+
+
+/* main menu structure start */
+.mainwrappcont {display:table; height:100%; width:100%; position:relative; border-spacing: 0;}
+.mainwrappcont > section {position:absolute; top:68px; bottom:0px; width:100%;}
+.maincontentbox {display:table; width:100%; height:100%; border-spacing: 0; table-layout:fixed; background-color:#fff;}
+.maincontentbox > aside, .maincontentbox > section {display:table-cell; height:100%; background-color:#fff; vertical-align: top;}
+.maincontentbox > section {background-color:#f9f9f9;}
+.maincontentbox > aside {width:251px; border-right:1px solid #cfcfcf;}
+
+/* header collaspable panel */
+#headfixbar {height:68px; background-color:#0071c8;}
+#headfixbar .toplogopanel {display:inline-block; padding:8px 40px;}
+#headfixbar .toplinkpanel {float:right;}
+#headfixbar .toplinkpanel .linkrightpanel {list-style-type:none; float:right;}
+#headfixbar .toplinkpanel .linkrightpanel li {float:left;}
+#headfixbar .toplinkpanel .linkrightpanel li a {display:block; border-right:1px solid #1888df; text-decoration:none; -webkit-transition: background-color 5s; -moz-transition: background-color 5s; -o-transition: background-color 5s; -ms-transition: background-color 5s; transition: background-color 5s; line-height:20px; padding:24px 20px;}
+#headfixbar .toplinkpanel .linkrightpanel li a:hover {background-color:#0071c8;}
+#headfixbar .toplinkpanel .linkrightpanel li a .fa {display: inline-block; font-family:'FontAwesome'; font-style: normal; font-weight: normal;    line-height: 1; color: #FFF; font-size:22px;}
+#headfixbar .toplinkpanel .linkrightpanel li a .fa-search:before {content: "\f002";}
+#headfixbar .toplinkpanel .linkrightpanel li a .fa-bell-o:before {content: "\f0a2";}
+#headfixbar .toplinkpanel .linkrightpanel li a .fa-cog:before {content: "\f013";}
+#headfixbar .toplinkpanel .linkrightpanel li a .notifictdiv {display:inline-block; position:absolute; top:18px; z-index:4; right:16px; border:1px solid #FFF; background-color:#81c33c; font:normal 11px Arial, Gotham, "Helvetica Neue", Helvetica, sans-serif; color:#FFF; padding:1px 3px;}
+
+.navmobile {display:none;}
+.navmobile {background:url(/static/polls/images/icon-menupan.png) no-repeat 50% 6px; line-height:30px; width:30px; float:left; height:30px; margin:18px 0 0 18px;}
+.navmobilactv {background:url(/static/polls/images/icon-menupan.png) no-repeat 50% -54px;}
+
+/* settingdrop down panel */
+.settingdropdownpan { padding:4px 0 0; position:absolute; top:62px; right:21px; width:169px; z-index:1000;}
+.settingdropdownpan .popuarrow {position:absolute; top:0px; right:9px; background-image:url(/static/polls/images/userpopuparrow.png); background-position:0; height:5px; width:7px;} 
+.settingdropdownpan .dropwappdiv {padding:4px 12px; border:1px solid #dedede; background-color:#ffffff;}
+.settingdropdownpan .dropwappdiv h6 {font-family:'opensansregularregular'; font-size:12px; color:#727272; line-height:32px; text-align:center; padding:0 0 8px;}
+.settingdropdownpan .dropwappdiv ul {float:left; margin:0 12px; padding:0 0 4px; list-style-type:none;}
+.settingdropdownpan .dropwappdiv ul li {float:left; padding:0 4px 0 0;}
+.settingdropdownpan .dropwappdiv ul li a {display:block; font-family:'opensansregularregular'; font-size:12px; color:#727272; line-height:19px; height:19px; text-decoration:none; width:19px; padding:0px !important;}
+
+
+/* aside left panel */
+.usersstatus {padding:12px 0 15px 21px; height:67px; border-bottom:1px solid #cfcfcf; border-top:1px solid #dbdbdb; background-color:#f9f9f9; position:relative;}
+.usersstatus .avtarclass {float:left; width:41px;}
+.usersstatus .avtarclass img {-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; background: #EEFF99; behavior: url(/pie/PIE.htc); border:1px solid #a7a7a7;}
+.usersstatus .avtarnamergt {margin:7px 0 0 54px;}
+.usersstatus .avtarnamergt a {font-family:'opensansregularregular'; font-size:14px; color:#565656; line-height:18px; text-decoration:none;}
+.usersstatus .avtarnamergt a .fadownarrow:before {display:inline-block; font-family:'FontAwesome'; font-style: normal; font-weight: normal; line-height:14px; color:#929292; font-size:14px; margin:0px 0 0 5px; content: "\f0d7"; vertical-align:bottom;}
+
+/* userdrop down menu */
+.dropdowmenu {padding:4px 0 0; position:absolute; top:47px; left:21px; width:136px; z-index:100;}
+.dropdowmenu .popuarrow {position:absolute; top:0px; right:9px; background-image:url(/static/polls/images/userpopuparrow.png); background-position:0; height:5px; width:7px;} 
+.dropdowmenu ul {border:1px solid #dedede; background-color:#ffffff; list-style-type:none;}
+.dropdowmenu ul li {border-bottom:1px solid #e4e4e4;}
+.dropdowmenu ul li:last-child {border-bottom:0px;}
+.dropdowmenu ul li a {display:block; font-family:'opensansregularregular'; font-size:12px; color:#727272; line-height:32px; text-decoration:none; padding:0 0 0 15px;}
+.dropdowmenu ul li a:hover {background-color:#2e9aef; color:#FFF;}
+
+.asideleftlink {list-style-type:none;}
+.asideleftlink li {}
+.asideleftlink li a {display:block; border-bottom:1px solid #f3f3f3; font-family:'opensansregularregular'; font-size:14px; color:#4f4f4f; line-height:24px; text-decoration:none; padding:8px 0 8px 23px;}
+.asideleftlink li a:hover {background-color:#f9f9f9;}
+.asideleftlink li a span.textname {text-transform:uppercase;}
+.asideleftlink li a .iconspan {display:inline-block; width:34px;}
+.asideleftlink li a .arrowupdown {float:right; width:14px; margin:0 15px 0 0; background:url(/static/polls/images/menuarrowdown.png) no-repeat 0 -27px;}
+.asideleftlink li a .arrowdown {background:url(/static/polls/images/menuarrowdown.png) no-repeat 0 14px;}
+
+/* collapse menu style */
+.maincontentbox > aside.sleekmenuset {width:95px; border-right:1px solid #cfcfcf;}
+.maincontentbox > aside.sleekmenuset .submenudiv {display:none;}
+.maincontentbox > aside.sleekmenuset .usersstatus span {display:none;}
+.maincontentbox > aside.sleekmenuset .asideleftlink li > a {background-position:50%; width:95px; height:45px; padding:0px; overflow:hidden; vertical-align:middle; text-align:center; display:table-cell;}
+.maincontentbox > aside.sleekmenuset .asideleftlink li:hover > a {background-image:none;}
+.maincontentbox > aside.sleekmenuset .asideleftlink li:hover > a .iconspan, .maincontentbox > aside.sleekmenuset .asideleftlink li a .arrowupdown {display:none;}
+.maincontentbox > aside.sleekmenuset .asideleftlink li > a span.textname, .maincontentbox > aside.sleekmenuset .asideleftlink li a .arrowupdown {display:none;}
+.maincontentbox > aside.sleekmenuset .asideleftlink li:hover > a span.textname {width:94px; height:45px; display:block; font-size:11px; line-height:45px; text-align:center;}
+.maincontentbox > aside.sleekmenuset .asideleftlink li a .fa {display:none;}
+.maincontentbox > aside.sleekmenuset .asidefooterpan .footerlinklist li a {padding: 0 21px;}
+
+/* sleek menu */
+aside.sleekmenuset > .mainwrappcont .asideleftlink li {position:relative;}
+.maincontentbox > aside.sleekmenuset .asideleftlink li .submenudiv {position:absolute; left:96px; top:0px; border:1px solid #cfcfcf; background-color:#FFF; z-index:1000; width:220px;}
+.maincontentbox > aside.sleekmenuset .asideleftlink li .submenudiv .sublistlink li a {padding:0 12px; text-align:left; width:auto; height:auto;}
+
+aside.sleekmenuset > .mainwrappcont > .leftmenuscroll .slimScrollDiv, aside.sleekmenuset > .mainwrappcont >  .leftmenuscroll .slim-scroll {overflow: visible !important;}
+aside.sleekmenuset > .mainwrappcont > .leftmenuscroll, aside.sleekmenuset > .mainwrappcont > section.leftmenuscroll {overflow: visible !important;}
+aside.sleekmenuset > .mainwrappcont > .leftmenuscroll, aside.sleekmenuset > .mainwrappcont > .leftmenuscroll .asideleftlink {overflow: visible !important;}
+
+/* aside.sleekmenuset left submenu div */
+.sleekmenuset .leftsidemenu li .submenudiv {border:1px solid #cfcfcf; background-color:#FFF}
+.sleekmenuset .leftsidemenu li .submenudiv .sublistlink {list-style-type:none;}
+.sleekmenuset .leftsidemenu li .submenudiv .sublistlink li a {display:block; font-family:'opensansregularregular'; font-size:13px; color:#575757; line-height:28px; text-decoration:none; padding:0px 0 0 55px; border-bottom:0px;}
+
+
+/* submenu div */
+.asideleftlink li .submenudiv {padding:8px 0; border-bottom:1px solid #f3f3f3;}
+.asideleftlink li .submenudiv .sublistlink {list-style-type:none;}
+.asideleftlink li .submenudiv .sublistlink li a {display:block; font-family:'opensansregularregular'; font-size:13px; color:#575757; line-height:28px; text-decoration:none; padding:0px 0 0 55px; border-bottom:0px;}
+
+.asidefooterpan {position:absolute; bottom:0px; left:0px; background-color:#0071c8; height:47px; width:100%;}
+.asidefooterpan .footerlinklist {float:right; list-style-type:none;}
+.asidefooterpan .footerlinklist li {float:left;}
+.asidefooterpan .footerlinklist li a {display:block; line-height:47px; border-left:1px solid #1888df; padding:0 30px; background-repeat:no-repeat;}
+.asidefooterpan .footerlinklist li a.menuicons {background-image:url(/static/polls/images/icon-menupan.png); background-position:50% 15px;}
+.asidefooterpan .footerlinklist li a.menuactive {background-image:url(/static/polls/images/icon-menupan.png); background-position:50% -40px;}
+.asidefooterpan .footerlinklist li a.logoffcls {background-image:url(/static/polls/images/icon-logoff.png); background-position:50%;}
+.asidefooterpan .footerlinklist li a .fa {display: inline-block; font-family:'FontAwesome'; font-style: normal; font-weight: normal; line-height:47px; color: #FFF; font-size:20px;}
+.asidefooterpan .footerlinklist li a .fa-power-off:before {content: "\f011";}
+.asidefooterpan .footerlinklist li a .fa-bars:before {content: "\f0c9";}
+
+/* left menu scroll part */
+.mainwrappcont > section.leftmenuscroll {bottom:68px; overflow-x: hidden; overflow-y: auto;}
+
+
+/* main content */
+.topbluepanel {background-color:#1888df; border-bottom:1px solid #146fb7; height:68px;}
+.topbluepanel .toplinkpanel {list-style-type:none; float:left;}
+.topbluepanel .toplinkpanel li {float:left;}
+.topbluepanel .toplinkpanel li a {display:block; padding:0 20px 0 55px; font-family:'opensansregularregular'; font-size:14px; color:#ffffff; line-height:68px; text-decoration:none; background-repeat:no-repeat; background-position:20px 50%; text-transform:uppercase;}
+.topbluepanel .toplinkpanel li a:hover {background-color:#0071c8;}
+.topbluepanel .toplinkpanel li a.mystatisicon {background-image:url(/static/polls/images/mystatis.png);}
+.topbluepanel .toplinkpanel li a.systemstaticon {background-image:url(/static/polls/images/icon-systemstat.png);}
+.topbluepanel .toplinkpanel li a.globalicon {background-image:url(/static/polls/images/icon-global.png);}
+.topbluepanel .toplinkpanel li a.profileicon {background-image:url(/static/polls/images/icon-userprofile.png);}
+.topbluepanel .toplinkpanel li a.organizaticon {background-image:url(/static/polls/images/icon-oragniz-white.png);}
+.topbluepanel .toplinkpanel li a.livedocicon {background-image:url(/static/polls/images/icon-livedocs-wht.png);}
+.topbluepanel .toplinkpanel li a.documenticon {background-image:url(/static/polls/images/icon-document-white.png);}
+
+/* page title content */
+.cotentitlepanl {border-bottom:1px solid #cccccc; background-color:#ffffff; padding:12px 29px; width:100%;}
+.cotentitlepanl h2 {font-family:'opensansregularregular'; font-size:24px; color:#727272; line-height:32px; text-transform:uppercase; display:inline-block; margin:0px; padding:0px;}
+.contentoprightpan {float:right; list-style-type:none;}
+.contentoprightpan li {float:left; padding:0 20px; border-right:1px solid #d9d9d9;}
+.contentoprightpan li.lastchild {padding:0 0 0 20px !important; border-right:0px;}
+.contentoprightpan li .imgstatis {float:right; padding:0 0 0 10px;}
+.contentoprightpan li .statcontent {margin:0 116px 0 0;}
+.contentoprightpan li .statcontent p {font-family:'opensansregularregular'; font-size:12px; color:#a58896; line-height:16px; text-transform:uppercase;}
+.contentoprightpan li .statcontent p span {font-size:18px; line-height:24px; color:#555555; display:block;}
+
+.mobilemorelnk {display:none; display:none;}
+.mobilemorelnk a {background: url(/static/polls/images/mobilemorelink.png) no-repeat 50%; padding:0px !important; line-height:51px;}
+.mobilemorelnk a:hover {background-color:#0071c8;}
+
+
+

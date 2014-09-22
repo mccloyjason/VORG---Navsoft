@@ -1,0 +1,92 @@
+
+/* destop width 
+----------------------------------------------- */
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+	
+	
+
+	
+}
+
+/* destop width 
+----------------------------------------------- */
+@media only screen and (min-width: 1100px) and (max-width: 1400px) {
+	
+	
+}
+
+
+/* TABLET LAYOUT (LANDSCAPE/992PX) 
+----------------------------------------------- */
+@media only screen and (min-width: 991px) and (max-width: 1100px) {
+	
+
+}
+
+
+/* TABLET LAYOUT (PORTRAIT/768PX) 
+----------------------------------------------- */
+@media only screen and (min-width:850px) and (max-width: 991px) {
+	
+	
+}
+
+
+
+
+/* TABLET LAYOUT (PORTRAIT/768PX) 
+----------------------------------------------- */
+@media only screen and (max-width:767px) {
+/*.mainwrappcont {display:inherit;}*/
+#headfixbar .toplogopanel {display:none;}
+#headfixbar .toplinkpanel .linkrightpanel li a {line-height: 20px; padding:24px 0px; width:55px; text-align:center;}
+.navmobile {display:block;}	
+.hiddendiv {display:none !important;}
+.mobileleftpan {bottom: 0; display: block !important; left: 0;   overflow-x: hidden; overflow-y: auto; position: absolute;   visibility: visible; width:80%;}
+.mobileleftpan + * {
+    backface-visibility: hidden;
+    background-color: #ff0000;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    transform: translate3d(75%, 0px, 0px);
+    transition: transform 0.2s ease-in-out 0s;
+    width: 100%;
+    z-index: 2;
+}
+.asidefooterpan {display:none;}
+.mainwrappcont > section.leftmenuscroll {bottom:2px; width: 95%;}
+
+.topbluepanel {height:51px;}
+.topbluepanel .toplinkpanel li a {line-height:51px; padding: 0 12px 0 45px; background-position:10px 50%; font-size:13px;}
+.mainwrappcont > section.topfityone {top:51px;}
+.mobilemorelnk {display:block; width:20%;}
+.mobilemorelnk a {display:block;}
+.morebsublinkdiv {width:162px; position:absolute; top:51px; right:10px; padding:9px 0 0; z-index:10;}
+.morebsublinkdiv .moretopsubarrw {background:url(../images/mobilesubmenuarrow.png) no-repeat 94% 0px; position:absolute; right:0px; top:2px; height:9px; width:100%;}
+.morebsublinkdiv .linkwrappdiv {border:1px solid #d4d4d4; background-color:#1888df;}
+.morebsublinkdiv .linkwrappdiv ul, .morebsublinkdiv .linkwrappdiv ul li {float:none;}
+.morebsublinkdiv .linkwrappdiv ul li a {background-position:14px 50%;
+    padding: 0 12px 0 35px !important; }
+.morebsublinkdiv .linkwrappdiv ul {list-style-type:none;}
+.morebsublinkdiv .linkwrappdiv ul li {}
+.morebsublinkdiv .linkwrappdiv ul li a {display:block; font-family:'opensansregularregular'; font-size:13px; color:#ffffff; line-height:52px; text-decoration:none;}
+/*.mobilwidt {width:40%;}*/
+.contentoprightpan, .contentoprightpan li {width:100%;  float:none;}
+.contentoprightpan li, .contentoprightpan li.lastchild {border-right:0px solid #d9d9d9; padding:0 0 25px !important;}
+.cotentitlepanl h2 {display:block; text-align:center; padding:8px 0 24px;}
+
+/* login panel */
+.adminloginpanel {width:94%;}
+.adminloginpanel .containerpaneldiv {background-color: #fff;    padding:16px;}
+	
+}
+
+
+
+
+
+
+

@@ -20,7 +20,7 @@ body {display:table;}
     	<h2><img src="{{STATIC_URL}}polls/admin-logo.png" alt=""/></h2>
         <div class="containerpaneldiv">
 		{% for question in questions %}
-				Welcome {{ question }}....<div style="float:right;"><a href="logout/">Logout</a></div>
+				Welcome {{ question }}....<div style="float:right;"><a href="/home/logout/">Logout</a></div>
 				</div>
 			{% empty %}
 				<div class="containerpaneldiv">
@@ -47,7 +47,7 @@ body {display:table;}
 				</form>
 				</div>
 				<div class="footerdiv">
-					<a href="#">Fogot your Password?</a>
+					<a href="home/forgot/">Fogot your Password?</a>
 				</div>
 			{% endfor %}
         
