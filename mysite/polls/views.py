@@ -6,7 +6,7 @@ from polls.models import Question
 def index(request):
 #return render(request, 'poll.html')
 	details = Question.objects.select_related().filter()
-	questions = [d.question_text for d in details]
+	#questions = [d.question_text for d in details]
 	return render(request, 'poll.html', {'questions': questions})
 #return render(request, 'polls/index.html', {"foo": "bar"},
 #content_type="application/xhtml+xml")

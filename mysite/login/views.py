@@ -11,7 +11,7 @@ from django.template import RequestContext
 def index(request):
 	loginsession = request.session.get('loginsession')
 	if loginsession == "":
-		return render(request, 'login.html')
+		return render(request, 'login.html',{'msg':''})
 	else:
 		return HttpResponseRedirect("/home/")
 	

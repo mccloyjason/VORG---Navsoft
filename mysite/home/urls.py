@@ -16,6 +16,8 @@ urlpatterns = patterns('',
 	 url(r'^home/confirm_password/(?P<id>\w+)/$', views.confirm_password, name='confirm_password'),
 	  url(r'^home/change_password_view/(?P<id>\w+)/$', views.change_password_view, name='change_password_view'),
 	 url(r'^change_password_view/(?P<id>\w+)/$', views.change_password_view, name='change_password_view'),
+	 url(r'^spreadsheet_download/$', views.spreadsheet_download, name='spreadsheet_download'),
+	 url(r'^chk_email/$', views.chk_email, name='chk_email'),
 	  
     
 )+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
