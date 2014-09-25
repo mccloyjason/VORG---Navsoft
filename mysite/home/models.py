@@ -19,3 +19,10 @@ def __unicode__(self):
 class auth_user(models.Model):
 	username = models.CharField(max_length=30)
 	password=models.CharField(max_length=128)
+class user_details(models.Model):
+	username = models.CharField(max_length=50)
+	role = models.CharField(max_length=200)
+	email = models.CharField(max_length=200)
+	report_to = models.CharField(max_length=200)
+def __unicode__(self):
+     return self.username

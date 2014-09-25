@@ -3,5 +3,9 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
 def index(request):
-	return render(request, 'home.html')
+	loginsession = request.session.get('loginsession')
+	if not loginsession:
+		return render(request, 'login.html',{'msg':''})
+	else:
+		return HttpResponseRedirect("/home/")
 	

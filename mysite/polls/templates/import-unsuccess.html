@@ -5,11 +5,11 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 <title>Welcome to Vorg</title>
 <link href="{{STATIC_URL}}polls/reset.css" rel="stylesheet" type="text/css" />
-<link href="{{STATIC_URL}}polls/style.css" rel="stylesheet" type="text/css" />
 <link href="{{STATIC_URL}}polls/screen.css" rel="stylesheet" type="text/css" />
 <link href="{{STATIC_URL}}polls/responsive-layout.css" rel="stylesheet" type="text/css" />
 <script src="{{STATIC_URL}}polls/jquery.min.js" type="text/javascript"></script>
 <script src="{{STATIC_URL}}polls/html5.js" type="text/javascript"></script>
+<link href="{{STATIC_URL}}polls/style.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -200,19 +200,23 @@
 	<div align="right" class="close-btn"><a href="javascript:void()" class="close"><img src="{{STATIC_URL}}polls/images/close_btn.png" width="16" style="border:none; cursor:pointer;" /></a></div>
 	
 	<div align="center" class="step1-text">
-	<p>Configuring Your VisualOrg System is quick and easy and can be completed in the following steps.</p>
-	<div class="click-text">
-		<div class="img-first"><img src="{{STATIC_URL}}polls/images/1.png"></div>
-		<div class="dwn-file">Download the simple spreadsheet by <a  href="/home/spreadsheet_download/"style="color:#0099FF">Cliking Here</a></div>
-		
-	</div>
-	<div><input type="button" name="continue" value="Continue" id="continue" class="cont-btn"/></div>
-	<div class="footer_txt">
-	<p>Configuring Your VisualOrg System is quick and easy and can be completed in the following steps.</p>
-	</div>
-
-	</div>
 	
+	<div class="click-text">
+		<div class="img-first"><img src="{{STATIC_URL}}polls/images/setup-failed.png"></div>
+		<div class="dwn-file">Your VisualORG system has not completed successfully.!</div>
+		<div class="fail-div">
+		<input type="button" name="abort" value="Abort" id="abort" class="abort-btn"/>
+		<input type="button" name="continue" value="Retry" id="continue" class="retry-btn"/>
+		</div>
+	</div>
+	</div>
+	<div class="footer_txt">
+	<p>You will need to fix following fields:</p>
+	<ul>
+	<li>Value Can't be Blank</li>
+	<li>Description Can't be Blank</li>
+	</ul>
+	</div>
 	</div>
 	
 	<!-- Mask to cover the whole screen -->
@@ -300,19 +304,19 @@
 			e.preventDefault();
 			
 			$('#mask').hide();
-			$('#dialog').hide();
+			$('.window').hide();
 		});		
 		
 		//if mask is clicked
 		$('#mask').click(function () {
 			$(this).preventDefault();
 			$(this).hide();
-			$('#dialog').hide();
+			$('.window').hide();
 		});		
 		
 		$("#continue").click(function(){
 		
-			$('#dialog').hide();
+			$('.window').hide();
 		var id = '#dialog1';
 		
 			//Get the screen height and width
@@ -343,14 +347,14 @@
 			e.preventDefault();
 			
 			$('#mask1').hide();
-			$('#dialog1').hide();
+			$('.window1').hide();
 		});		
 		
 		//if mask is clicked
 		$('#mask').click(function () {
 			$(this).preventDefault();
 			$(this).hide();
-			$('#dialog1').hide();
+			$('.window1').hide();
 		});	
 	});
 		$("#done").click(function(){
@@ -369,6 +373,19 @@
 			}
 		});
 		});
+		$("#abort").click(function(){
+		$('.window').hide();
+		$('#mask').hide();
+		});
+		$('.close').click(function (e) {
+			//Cancel the link behavior
+			e.preventDefault();
+			
+			$('.window1').hide();
+			$('#mask1').hide();
+			$('.window').hide();
+		$('#mask').hide();
+		});	
 	});
 	
 	</script>

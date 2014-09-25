@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 	 url(r'^change_password_view/(?P<id>\w+)/$', views.change_password_view, name='change_password_view'),
 	 url(r'^spreadsheet_download/$', views.spreadsheet_download, name='spreadsheet_download'),
 	 url(r'^chk_email/$', views.chk_email, name='chk_email'),
+	  url(r'^upload/$', views.upload, name='upload'),
 	  
     
 )+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

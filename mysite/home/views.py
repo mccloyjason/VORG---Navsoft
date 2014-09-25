@@ -10,12 +10,11 @@ from django.template import RequestContext
 from django.core.context_processors import csrf
 from django.core.mail import send_mail,EmailMultiAlternatives
 from django.template import loader, Context
-
-
+from home.models import user_details
 
 def index(request):
 	loginsession = request.session.get('loginsession')
-	if loginsession == '':
+	if not loginsession:
 		return render(request, 'login.html', {'questions': loginsession })
 	else:
 		return render(request, 'after-login.html', {'questions': loginsession })
@@ -78,7 +77,7 @@ def spreadsheet_download(request):
 	response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
 
 	writer = csv.writer(response)
-	writer.writerow(['Roles', 'User Name', 'Report-to-Name', 'Email'])
+	writer.writerow(['username', 'role', 'email', 'report_to'])
 	#writer.writerow(['Second row', 'A', 'B', 'C', '"Testing"', "Here's a quote"])
 
 	return response	
@@ -89,4 +88,33 @@ def chk_email(request):
 		return HttpResponse('yes')
 	else:
 		return HttpResponse('no')
+def upload(request):
+	import csv
+	import codecs
+	#return HttpResponse(request.FILES['csvData'].content_type)
+	if request.FILES['csvData'].content_type == "text/csv" or request.FILES['csvData'].content_type == "application/vnd.ms-excel":
+		file = request.FILES['csvData']
+		utf8_file = codecs.EncodedFile(file,"utf-8")
+		#data = [row for row in csv.reader(utf8_file)]
+		#return HttpResponse(utf8_file)
+		i=0
+		for row in codecs.EncodedFile(file,"utf-8"):
+			if i == 0:
+				i += 1
+			else:
+				row1=row.split(b',')
+				user = user_details()
+				user.username = row1[0]
+				user.role =row1[1]
+				user.email =row1[2]
+				user.report_to =row1[3]
+				user.save()
+		data = user_details.objects.all()
+		loginsession = request.session.get('loginsession')
+		return render(request, 'after-import.html', {'questions': loginsession ,'data':data})
+	else:
+		loginsession = request.session.get('loginsession')
+		return render(request, 'import-unsuccess.html', {'questions': loginsession })
+	
+	
 	
