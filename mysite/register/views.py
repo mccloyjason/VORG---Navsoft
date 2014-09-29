@@ -10,7 +10,6 @@ from django.template import RequestContext
 from django.core.context_processors import csrf
 from django.core.mail import send_mail,EmailMultiAlternatives
 
-
 def index(request):
 	return render(request, 'register.html',{'msg':''})
 def signup(request):
@@ -34,6 +33,13 @@ def signup(request):
 def chk_user(request):
 	username = request.POST['username']
 	details = User.objects.filter(username=username).count()
+	if details > 0:
+		return HttpResponse('yes')
+	else:
+		return HttpResponse('no')
+def chk_comp(request):
+	comp_name = request.POST['comp_name']
+	details = User.objects.filter(company_name=comp_name).count()
 	if details > 0:
 		return HttpResponse('yes')
 	else:

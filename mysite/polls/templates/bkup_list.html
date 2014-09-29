@@ -138,37 +138,18 @@
 				<div class="clear"></div>
 			  </div>
                 <!--top link end here-->
-                  <section class="topfityone">
+                
+                 <section class="topfityone">
 					<section class="cotentitlepan_add"> 
-                    	 <div class="theGrid">
+                    	<div class="theGrid">
                 <div class="gridTop">
-                 <ul>
-                    <li style="border-left:none;">
-                    <a class="activete" href="javascript:void(0);" onclick="activeslt()">Activate Selected</a>
-                    <select id="select" class="active_deactivate_select">
-                    	<option>page Limit</option>
-                        <option>page Limit</option>
-                    </select>
-                    </li>
-                    
-                    <li>
-                    <a class="deactivete" href="javascript:void(0);" onclick="inactiveslt()">Deactivate Selected</a>
-                    <select id="select" class="active_deactivate_select">
-                    	<option>Filter by</option>
-                        <option>Filter by</option>
-                    </select>
-                    </li>
-                    
-                   <!-- <li>
-                    <a class="delete" href="#">Delete Selected</a>
-                    <select id="select" class="not_view_select">
-                    	<option>Not Viewed in</option>
-                        <option>Not Viewed in</option>
-                    </select>
-                    </li>-->
+                  <ul>
+                    <li style="border-left:none;"><a class="activete" href="#">Activate Selected</a></li>
+                    <li><a class="deactivete" href="#">Deactivate Selected</a></li>
+                    <li><a class="delete" href="#">Delete Selected</a></li>
                     <div class="clear"></div>
                   </ul>
-                  	<input type="search" name="input-filter" id="input-filter" placeholder="Search" class="search_box" />
+                  	<input type="text" name="txtsearch" id="txtsearch" placeholder="Search" class="search_box" />
                     <input type="submit" value="" id="txtsubmit" name="txtsubmit" class="search_btn" />
                   <div class="clear"></div>
                 </div>
@@ -176,10 +157,10 @@
                  <!--New-->
                     <div class="new_table_wi">
                     <section id="flip-scroll">
-                    	 <table class="table-bordered table-striped table-condensed cf" id="tbl">
+                    	 <table class="table-bordered table-striped table-condensed cf">
 						  <thead class="cf">
 							  <tr class="cf_bg_colro">
-								  <th><input type="checkbox"  id="selectall" /></th>
+								  <th><input type="checkbox" name="check" /></th>
 								  <th>Name</th>
 								  <th class="numeric">Roll</th>
 								  <th class="numeric">Report To</th>
@@ -191,8 +172,8 @@
 						  </thead>
 						  <tbody>
 						  {% for d in data%}
-						  <tr id="list{{d.id}}">
-						<td><input type="checkbox" name="checklist[]" class="checkbox1" id="checklist{{d.id}}" value="{{d.id}}"  /></td>
+						  <tr>
+						<td><input type="checkbox" name="check" /></td>
 						<td>{{d.username}}</td>
 						<td class="numeric">{{d.role}}</td>
 						<td class="numeric">{{d.report_to}}</td>
@@ -203,59 +184,70 @@
                         		  <ul class="table_ul">
 									<li><a href="#"><img src="{{STATIC_URL}}polls/images/action1.png" alt="#" /></a></li>
 									<li><a href="#"><img src="{{STATIC_URL}}polls/images/action2.png" alt="#" /></a></li>
-									{% if d.status == "Active" %}
-									<li><a href="javascript:void(0);" onclick="listinactive({{d.id}})" ><img src="{{STATIC_URL}}polls/images/action3.png" alt="#" /></a></li>
-									{% else %}
-									<li><a href="javascript:void(0);" onclick="listactive({{d.id}})" ><img src="{{STATIC_URL}}polls/images/action4.png" alt="#" /></a></li>
-									{% endif %}
-									<!--<li><a href="javascript:void(0);" onclick="removelist({{d.id}})"><img src="{{STATIC_URL}}polls/images/action5.png" alt="#" /></a></li>-->
+									<li><a href="#"><img src="{{STATIC_URL}}polls/images/action3.png" alt="#" /></a></li>
+									<li><a href="#"><img src="{{STATIC_URL}}polls/images/action4.png" alt="#" /></a></li>
+									<li><a href="#"><img src="{{STATIC_URL}}polls/images/action5.png" alt="#" /></a></li>
                                   <div class="clear"></div>
                                 </ul></td>
 					</tr>
 					{% endfor %}
-					</tbody>
-					</table>
+					{% for d in data%}
+					{% if forloop.counter|divisibleby:2 %}
+                    <tr class="lighter">
+					{% else %}
+					<tr class="darker">
+					{% endif %}
+                      <td><table width="100%" height="40" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td align="center" style="padding:0; border-left:none;" width="50"><input type="checkbox" name="check" /></td>
+                            <td align="left" width="218">{{d.username}}</td>
+                            <td align="left" width="128">{{d.role}}</td>
+                            <td align="left" width="128">{{d.report_to}}</td>
+                            <td align="left" width="228">{{d.email}}</td>
+                            <td align="left" width="158">{{d.date}}</td>
+                            <td align="left" width="128">{{d.status}}</td>
+                            <td style="border-right:none;" align="left" width="170"><ul>
+                                <li><a href="#"><img src="{{STATIC_URL}}polls/images/action1.png" alt="#" /></a></li>
+                                <li><a href="#"><img src="{{STATIC_URL}}polls/images/action2.png" alt="#" /></a></li>
+                                <li><a href="#"><img src="{{STATIC_URL}}polls/images/action3.png" alt="#" /></a></li>
+                                <li><a href="#"><img src="{{STATIC_URL}}polls/images/action4.png" alt="#" /></a></li>
+                                <li><a href="#"><img src="{{STATIC_URL}}polls/images/action5.png" alt="#" /></a></li>
+                                <div class="clear"></div>
+                              </ul></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+					{% endfor %}
 					
-                   
+                    <div class="pagination">
+					<span class="step-links">
+						{% if data.has_previous %}
+							<a href="?page={{ data.previous_page_number }}">previous</a>
+						{% endif %}
+
+						<span class="current">
+							Page {{ data.number }} of {{ data.paginator.num_pages }}.
+						</span>
+
+						{% if data.has_next %}
+							<a href="?page={{ data.next_page_number }}">next</a>
+						{% endif %}
+					</span>
+				</div>
                     
-                 
-                    </section>
-                    </div>
+                  </table>
+                </div>
+              </div>
               <!--Table Ends-->
                       
 						
-                </div>
-              <!--Table Ends-->
-                <div class="paginetion">
-              		<!--Left-->
-                    <div class="paginetion_left">
-                    	<input type="submit" id="submit" name="submit" value="ADD NEW" class="page_btn" />
-                    </div>
-                    <!--Left-->
-                    <!--Right-->
-                    <div class="paginetion_right">
-                    	<ul>
-                        	<li>
-							{% if data.has_previous %}
-							 <a href="?page={{ data.previous_page_number }}"><img src="{{STATIC_URL}}polls/images/page_btn.png" alt="page_btn" /></a>
-							{% endif %}
-							{% if data.has_next %}
-                            <a href="?page={{ data.next_page_number }}"><img src="{{STATIC_URL}}polls/images/page_btn1.png" alt="page_btn" /></a>
-							{% endif %}
-                            </li>
-                            
-                            <li>
-                            	<p> {{ data.number }} of <span>{{ data.paginator.num_pages }}</span></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Right-->
-              </div>
-              <div class="clear"></div>
+                    </section>
+                
+                
             </section>
-          </section>
+            
+            </section>
         </section>
-      </section>
         <!--section right panel end here-->
     
     </section>
@@ -338,253 +330,11 @@
 </script>
 <script src="{{STATIC_URL}}polls/jquery.bvalidator.js" type="text/javascript"></script>
 <link href="{{STATIC_URL}}polls/bvalidator.css" rel="stylesheet" type="text/css" />
-<script src="{{STATIC_URL}}polls/jquery.filtertable.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {	
-	 $('table').filterTable({ // apply filterTable to all tables on this page
-            inputSelector: '#input-filter' // use the existing input instead of creating a new one
-        });
 	$('#cpform').bValidator();
-			var id = '#dialog';
 		
-			//Get the screen height and width
-			var maskHeight = $(document).height();
-			var maskWidth = $(window).width();
-		
-			//Set heigth and width to mask to fill up the whole screen
-			$('#mask').css({'width':maskWidth,'height':maskHeight});
-			
-			//transition effect		
-			$('#mask').fadeIn(800);	
-			$('#mask').fadeTo("slow",0.8);	
-		
-			//Get the window height and width
-			var winH = $(window).height();
-			var winW = $(window).width();
-				  
-			//Set the popup window to center
-			$(id).css('top',  winH/2-$(id).height()/2 -50);
-			$(id).css('left', winW/2-$(id).width()/2);
-		
-			//transition effect
-			$(id).fadeIn(500); 	
-		
-		//if close button is clicked
-		$('.window .close').click(function (e) {
-			//Cancel the link behavior
-			e.preventDefault();
-			
-			$('#mask').hide();
-			$('.window').hide();
-		});		
-		
-		//if mask is clicked
-		$('#mask').click(function () {
-			$(this).preventDefault();
-			$(this).hide();
-			$('.window').hide();
-		});		
-		
-		$("#continue").click(function(){
-		
-			$('.window').hide();
-		var id = '#dialog1';
-		
-			//Get the screen height and width
-			var maskHeight = $(document).height();
-			var maskWidth = $(window).width();
-		
-			//Set heigth and width to mask to fill up the whole screen
-			$('#mask1').css({'width':maskWidth,'height':maskHeight});
-			
-			//transition effect		
-			$('#mask1').fadeIn(800);	
-			$('#mask1').fadeTo("slow",0.8);	
-		
-			//Get the window height and width
-			var winH = $(window).height();
-			var winW = $(window).width();
-				  
-			//Set the popup window to center
-			$(id).css('top',  winH/2-$(id).height()/2 -50);
-			$(id).css('left', winW/2-$(id).width()/2);
-		
-			//transition effect
-			$(id).fadeIn(500); 	
-		
-		//if close button is clicked
-		$('.window .close').click(function (e) {
-			//Cancel the link behavior
-			e.preventDefault();
-			
-			$('#mask1').hide();
-			$('.window1').hide();
-		});		
-		
-		//if mask is clicked
-		$('#mask').click(function () {
-			$(this).preventDefault();
-			$(this).hide();
-			$('.window1').hide();
-		});	
-	});
-		$("#done").click(function(){
-			var csvData
-		csvData = $("#csvData").val();
-		$.ajax({
-			url:"/home/upload/",
-			type: "POST",
-			data: {csvData: csvData,csrfmiddlewaretoken: '{{ csrf_token }}'},
-			success:function(response){
-				alert(response);
-			},
-			complete:function(){},
-			error:function (xhr, textStatus, thrownError){
-			//alert("error doing something");
-			}
-		});
-		});
-		$("#abort").click(function(){
-		$('.window').hide();
-		$('#mask').hide();
-		});
-		$('.close').click(function (e) {
-			//Cancel the link behavior
-			e.preventDefault();
-			
-			$('.window1').hide();
-			$('#mask1').hide();
-			$('.window').hide();
-		$('#mask').hide();
-		});	
-	});
-	function listinactive(id)
-	{
-		$.ajax({
-			url:"/home/listinactive/",
-			type: "POST",
-			data: {id: id,csrfmiddlewaretoken: '{{ csrf_token }}'},
-			success:function(response){
-			location.reload();
-			},
-			complete:function(){},
-			error:function (xhr, textStatus, thrownError){
-			
-			}
-		});
-	}
-	function listactive(id)
-	{
-		$.ajax({
-			url:"/home/listactive/",
-			type: "POST",
-			data: {id: id,csrfmiddlewaretoken: '{{ csrf_token }}'},
-			success:function(response){
-			location.reload();
-			},
-			complete:function(){},
-			error:function (xhr, textStatus, thrownError){
-			
-			}
-		});
-	}
-	function removelist(id)
-	{
-		$.ajax({
-			url:"/home/removelist/",
-			type: "POST",
-			data: {id: id,csrfmiddlewaretoken: '{{ csrf_token }}'},
-			success:function(response){
-			location.reload();
-			},
-			complete:function(){},
-			error:function (xhr, textStatus, thrownError){
-			
-			}
-		});
-	}
-	function activeslt()
-	{
-		
-		$('#selectall').removeAttr('checked');
-		var lena=$("input:checkbox:checked").length;
-		var counter = 0;
-		if(lena == 0)
-		{
-			alert('Please select atleast one checkbox');
-		}
-		else{
-			var searchIDs = $("input:checkbox:checked").map(function(){
-			  //alert($(this).val());
-			  $.ajax({
-					url:"/home/activeslt/",
-					type: "POST",
-					data: {id: $(this).val(),csrfmiddlewaretoken: '{{ csrf_token }}'},
-					success:function(response){
-					//alert(response);
-					counter++;
-					},
-					complete:function(){},
-					error:function (xhr, textStatus, thrownError){
-					
-					}
-				});
-			}).get();
-			alert('Activate Successfully');
-			if(counter > 0){
-				location.reload();	
-			}
-			}
-		
-	}
-	function inactiveslt()
-	{
-		$('#selectall').removeAttr('checked');
-		var lena=$("input:checkbox:checked").length;
-		var counter = 0;
-		if(lena == 0)
-		{
-			alert('Please select atleast one checkbox');
-		}
-		else{
-			var searchIDs = $("input:checkbox:checked").map(function(){
-			  //alert($(this).val());
-			  $.ajax({
-					url:"/home/inactiveslt/",
-					type: "POST",
-					data: {id: $(this).val(),csrfmiddlewaretoken: '{{ csrf_token }}'},
-					success:function(response){
-					counter++;
-					},
-					complete:function(){},
-					error:function (xhr, textStatus, thrownError){
-					
-					}
-				});
-			}).get();
-		}
-		alert('Deactivate Successfully');
-			if(counter > 0){
-				location.reload();	
-			}
-		
-		
-	}
-	$(document).ready(function() {
-    $('#selectall').click(function(event) {  //on click 
-        if(this.checked) { // check select status
-            $('.checkbox1').each(function() { //loop through each checkbox
-                this.checked = true;  //select all checkboxes with class "checkbox1"               
-            });
-        }else{
-            $('.checkbox1').each(function() { //loop through each checkbox
-                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
-            });         
-        }
-    });
-    
-});
-	</script>
 	
+	</script>
 </body>
 </html>

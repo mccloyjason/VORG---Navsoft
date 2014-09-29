@@ -24,5 +24,8 @@ class user_details(models.Model):
 	role = models.CharField(max_length=200)
 	email = models.CharField(max_length=200)
 	report_to = models.CharField(max_length=200)
+	date = models.DateField()
+	status = models.CharField(max_length=20)
+	userid=models.CharField(max_length=200)
 def __unicode__(self):
      return self.username
