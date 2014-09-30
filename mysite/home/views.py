@@ -12,6 +12,7 @@ from django.core.mail import send_mail,EmailMultiAlternatives
 from django.template import loader, Context
 from home.models import user_details
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template.loader import render_to_string
 
 def index(request):
 	loginsession = request.session.get('loginsession')
@@ -173,7 +174,7 @@ def upload(request):
 			# If page is out of range (e.g. 9999), deliver last page of results.
 				contacts = paginator.page(paginator.num_pages)
 			loginsession = request.session.get('loginsession')
-			return render(request, 'after-import.html', {'questions': loginsession ,'data':contacts})
+			return render(request, 'after-login.html', {'questions': loginsession ,'data':contacts})
 		else:
 			data = user_details.objects.filter(userid=loginsession).order_by('-id')
 			paginator = Paginator(data, 10) # Show 25 contacts per page
@@ -206,34 +207,121 @@ def upload(request):
 
 		
 		loginsession = request.session.get('loginsession')
-		return render(request, 'user-list.html', {'questions': loginsession,'data':contacts })
+		return render(request, 'after-login.html', {'questions': loginsession,'data':contacts })
 		
 def listinactive(request):
 	id = request.POST['id']
 	u = user_details.objects.get(id=id)
 	u.status='Inactive'
 	u.save()
-	return HttpResponse('yes')
+	loginsession = request.session.get('loginsession')
+	data = user_details.objects.filter(userid=loginsession).order_by('-id')
+	paginator = Paginator(data, 10) # Show 25 contacts per page
+
+	page = request.GET.get('page')
+	try:
+		contacts = paginator.page(page)
+	except PageNotAnInteger:
+	# If page is not an integer, deliver first page.
+		contacts = paginator.page(1)
+	except EmptyPage:
+	# If page is out of range (e.g. 9999), deliver last page of results.
+		contacts = paginator.page(paginator.num_pages)
+	dbsa= render_to_response('priorg.html', {'questions': loginsession ,'data':contacts,'page':page},context_instance=RequestContext(request))
+	return HttpResponse(dbsa)
 def listactive(request):
 	id = request.POST['id']
 	u = user_details.objects.get(id=id)
 	u.status='Active'
 	u.save()
-	return HttpResponse('yes')
+	loginsession = request.session.get('loginsession')
+	data = user_details.objects.filter(userid=loginsession).order_by('-id')
+	paginator = Paginator(data, 10) # Show 25 contacts per page
+
+	page = request.GET.get('page')
+	try:
+		contacts = paginator.page(page)
+	except PageNotAnInteger:
+	# If page is not an integer, deliver first page.
+		contacts = paginator.page(1)
+	except EmptyPage:
+	# If page is out of range (e.g. 9999), deliver last page of results.
+		contacts = paginator.page(paginator.num_pages)
+	dbsa= render_to_response('priorg.html', {'questions': loginsession ,'data':contacts,'page':page},context_instance=RequestContext(request))
+	return HttpResponse(dbsa)
 def removelist(request):
 	id = request.POST['id']
 	u = user_details.objects.get(id=id)
 	u.delete()
-	return HttpResponse('yes')
+	loginsession = request.session.get('loginsession')
+	data = user_details.objects.filter(userid=loginsession).order_by('-id')
+	paginator = Paginator(data, 10) # Show 25 contacts per page
+
+	page = request.GET.get('page')
+	try:
+		contacts = paginator.page(page)
+	except PageNotAnInteger:
+	# If page is not an integer, deliver first page.
+		contacts = paginator.page(1)
+	except EmptyPage:
+	# If page is out of range (e.g. 9999), deliver last page of results.
+		contacts = paginator.page(paginator.num_pages)
+	dbsa= render_to_response('priorg.html', {'questions': loginsession ,'data':contacts,'page':page},context_instance=RequestContext(request))
+	return HttpResponse(dbsa)
 def activeslt(request):
 	id = request.POST['id']
 	u = user_details.objects.get(id=id)
 	u.status='Active'
 	u.save()
-	return HttpResponse('yes')
+	loginsession = request.session.get('loginsession')
+	data = user_details.objects.filter(userid=loginsession).order_by('-id')
+	paginator = Paginator(data, 10) # Show 25 contacts per page
+
+	page = request.GET.get('page')
+	try:
+		contacts = paginator.page(page)
+	except PageNotAnInteger:
+	# If page is not an integer, deliver first page.
+		contacts = paginator.page(1)
+	except EmptyPage:
+	# If page is out of range (e.g. 9999), deliver last page of results.
+		contacts = paginator.page(paginator.num_pages)
+	dbsa= render_to_response('priorg.html', {'questions': loginsession ,'data':contacts,'page':page},context_instance=RequestContext(request))
+	return HttpResponse(dbsa)
 def inactiveslt(request):
 	id = request.POST['id']
 	u = user_details.objects.get(id=id)
 	u.status='Inactive'
 	u.save()
-	return HttpResponse('yes')
+	loginsession = request.session.get('loginsession')
+	data = user_details.objects.filter(userid=loginsession).order_by('-id')
+	paginator = Paginator(data, 10) # Show 25 contacts per page
+
+	page = request.GET.get('page')
+	try:
+		contacts = paginator.page(page)
+	except PageNotAnInteger:
+	# If page is not an integer, deliver first page.
+		contacts = paginator.page(1)
+	except EmptyPage:
+	# If page is out of range (e.g. 9999), deliver last page of results.
+		contacts = paginator.page(paginator.num_pages)
+	dbsa= render_to_response('priorg.html', {'questions': loginsession ,'data':contacts,'page':page},context_instance=RequestContext(request))
+	return HttpResponse(dbsa)
+def priorg(request):
+
+	loginsession = request.session.get('loginsession')
+	data = user_details.objects.filter(userid=loginsession).order_by('-id')
+	paginator = Paginator(data, 10) # Show 25 contacts per page
+
+	page = request.GET.get('page')
+	try:
+		contacts = paginator.page(page)
+	except PageNotAnInteger:
+	# If page is not an integer, deliver first page.
+		contacts = paginator.page(1)
+	except EmptyPage:
+	# If page is out of range (e.g. 9999), deliver last page of results.
+		contacts = paginator.page(paginator.num_pages)
+	dbsa= render_to_response('priorg.html', {'questions': loginsession ,'data':contacts,'page':page},context_instance=RequestContext(request))
+	return HttpResponse(dbsa)

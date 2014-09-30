@@ -10,6 +10,218 @@
 <link href="{{STATIC_URL}}polls/bvalidator.css" rel="stylesheet" type="text/css" />
 <link href="{{STATIC_URL}}polls/responsive-layout.css" rel="stylesheet" type="text/css" />
 <script src="{{STATIC_URL}}polls/jquery.filtertable.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{{STATIC_URL}}polls/drop/scripts_dropdown.js"></script>
 <style type="text/css">
 body {display:table;}
 </style>
+</head>
+<body>
+<section class="mainwrappcont">
+	
+    <!--Header start here-->
+    <header id="headfixbar">
+    	<div class="toplogopanel"><img src="{{STATIC_URL}}polls/admin-logo.png" alt=""/></div>
+        <a href="#" class="navmobile"></a>
+        <div class="toplinkpanel">
+        	<ul class="linkrightpanel">
+            	<li><a href="#"><i class="fa fa-search"></i></a></li>
+                <li class="posi_global"><a href="#"><span class="notifictdiv">1</span><i class="fa fa-bell-o"></i></a></li>
+                <li class="posi_global"><a href="#" class="settingdrop"><i class="fa fa-cog"></i></a>
+                	<div class="settingdropdownpan">
+                    	<div class="popuarrow"></div>
+                        <div class="dropwappdiv">
+                        	<h6>Change Theme Color</h6>
+                            <ul>
+                            	<li><a href="#" style="background-color:#fb9337"></a></li>
+                                <li><a href="#" style="background-color:#fb9337"></a></li>
+                                <li><a href="#" style="background-color:#fb9337"></a></li>
+                                <li><a href="#" style="background-color:#fb9337"></a></li>
+                                <li><a href="#" style="background-color:#fb9337"></a></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+		
+  </header>
+    <!--Header end here-->
+    
+    <!--content panel start here-->
+    <section>
+    <section class="maincontentbox">
+    
+    	<!--aside left panel start here-->
+        <aside class="leftmenpan hiddendiv">
+        	<section class="mainwrappcont">
+            <div class="usersstatus">
+            	<div class="avtarclass"><a href="#" class="userprofill"><img src="{{STATIC_URL}}polls/images/pic-avatarimg.png" alt=""/></a></div>
+                <div class="avtarnamergt">
+                	<a href="#"  class="userprofill"><span>John Doe</span> <i class="fadownarrow"></i></a>
+                </div>
+                <div class="clear"></div>
+                <div class="dropdowmenu">
+                	<div class="popuarrow"></div>
+                    <ul>
+                    	<li><a href="#">Settings</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Notification</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <section class="leftmenuscroll">
+            <ul class="asideleftlink leftsidemenu">
+            	<li><a href="#"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-dashboard.png" alt=""/></span><span class="textname">Dashboard</span> 
+                <span class="arrowupdown">&nbsp;</span>
+                </a>
+                <div class="submenudiv">
+                	<ul class="sublistlink">
+                    	<li><a href="#"><span>System Configuration</span></a></li>
+                        <li><a href="#"><span>Alerts</span></a></li>
+                        <li><a href="#"><span>Account Info</span></a></li>
+                        <li><a href="#"><span>Activate / Deactivate Seats</span></a></li>
+                    </ul>
+                </div>
+                </li>
+                
+                <li><a href="javascript:void(0);" onclick="getprimaryorg('Primary ORG');" class="primaryorg"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-primaryorg.png" alt=""/></span> <span class="textname">Primary Org</span> 
+                <span class="arrowupdown">&nbsp;</span>
+				</a>
+				 <div class="submenudiv">
+                	<ul class="sublistlink">
+                    	<li><a href="#"><span>Add User</span></a></li>
+                       
+                    </ul>
+                </div>
+				</li>
+                
+                <li><a href="#" class="teamsicon"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-teams.png" alt=""/></span> <span class="textname">Teams</span> 
+                </a></li>
+                
+                <li><a href="#" class="workgroup"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-workgroup.png" alt=""/></span> <span class="textname">Workgroups</span> 
+                </a></li>
+                
+                <li><a href="#" class="livedocs"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-livedocs.png" alt=""/></span> <span class="textname">LiveDocs</span> 
+                </a></li>
+                
+                <li><a href="#" class="documents"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-documents.png" alt=""/></span> <span class="textname">Documents</span> 
+                </a></li>
+                
+                <li><a href="#" class="process"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-process.png" alt=""/></span> <span class="textname">Process</span> 
+                </a></li>
+                
+                <li><a href="#" class="channels"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-channel.png" alt=""/></span> <span class="textname">channels</span> 
+                </a></li>
+                
+                
+            </ul>
+            </section>
+            
+            <div class="asidefooterpan">
+            	<ul class="footerlinklist">
+                	<li><a href="/home/logout/" class="logoffcls">&nbsp;</a></li>
+                    <li><a href="#" class="menupanl menuicons">&nbsp;</a></li>
+                </ul>
+            </div>
+            </section>
+        
+        </aside>
+		 <!--aside left panel end here-->
+        
+        <!--section right panel start here-->
+        <section class="">
+        	<section class="mainwrappcont">
+            
+            	<!--top link start here-->
+                <div class="topbluepanel">
+                	<ul class="toplinkpanel">
+                    	<li class="mobilwidt"><a href="#" class="mystatisicon">My Stats</a></li>
+                        <li class="mobilwidt"><a href="#" class="systemstaticon">System Stats</a></li>
+                        <li class="hiddendiv"><a href="#" class="globalicon">Global</a></li>
+                        <li class="hiddendiv"><a href="#" class="profileicon">User Profiles</a></li>
+                        <li class="hiddendiv"><a href="#" class="organizaticon">Organizations</a></li>
+                        <li class="hiddendiv"><a href="#" class="livedocicon">LiveDocs</a></li>
+                        <li class="hiddendiv"><a href="#" class="documenticon">Documents</a></li>
+                    </ul>
+                    <div  class="mobilemorelnk fright">
+                    <a href="#">&nbsp;</a>					
+                    <div class="morebsublinkdiv">
+                    	<div class="moretopsubarrw"></div>
+                    	<div class="linkwrappdiv">
+                        	<ul class="toplinkpanel">
+                        <li><a href="#" class="globalicon">Global</a></li>
+                        <li><a href="#" class="profileicon">User Profiles</a></li>
+                        <li><a href="#" class="organizaticon">Organizations</a></li>
+                        <li><a href="#" class="livedocicon">LiveDocs</a></li>
+                        <li><a href="#" class="documenticon">Documents</a></li>
+                    </ul>
+                        </div>
+                    </div>
+                    </div>
+                <div class="clear"></div>
+                
+                </div>
+                <!--top link end here-->
+                
+                <section class="topfityone">
+                	<section class="cotentitlepanl">
+                    	<ul id="dymenu"></ul>
+                        <ul class="contentoprightpan">
+                        	<li>
+                            	<div class="imgstatis"><img src="{{STATIC_URL}}polls/images/statisred.png" alt=""/></div>
+                                <div class="statcontent">
+                               	  <p>
+                                    	Users
+										<span>17,561</span>	
+                                  </p>
+                                </div>
+                            </li>
+                            
+                            <li class="lastchild">
+                            	<div class="imgstatis"><img src="{{STATIC_URL}}polls/images/statisgreen.png" alt=""/></div>
+                                <div class="statcontent">
+                               	  <p>
+                                    	profit
+										<span>$21,561.21</span>	
+                                  </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+		<script>
+		function getprimaryorg(str)
+		{
+			//alert(str);
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			$("#dymenu").html("<li id="+Text+">"+str+"<a href='javascript:void(0);' onclick='removeli("+'"'+Text+'"'+")'><img src='{{STATIC_URL}}polls/images/close-icon.png'/></a></li>");
+			$.ajax({
+					url:"/home/priorg/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#primaryorg").html(response);
+					$("#primaryorg").show();
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+		}
+		function removeli(str)
+		{
+			
+			$("#"+str).hide();
+			if(str == "primary-org")
+				$("#primaryorg").hide();
+		}
+		</script>
