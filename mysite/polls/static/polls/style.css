@@ -4,7 +4,7 @@
 .close-btn img {width: 10px;height: 13px;float: left;margin: 10px 0px 0px 13px;}
 .win-main{top:150px; left: 551.5px; display: none;}
 .setup-head{text-align: center; width: auto; background: #0071c8; color: rgb(255, 255, 255); margin-top: 0px; height: 35px; line-height: 29px; font-weight: bold; font-size: 16px; padding-top:3px;}
-.click-text{margin-top: 32px; border: 1px solid #77ba31; height: 112px; width: 300px;}
+.click-text{margin-top: 32px; border: 1px solid #77ba31; height: 173px; width: 300px;}
 .img-first{width: 50px; height: auto; padding: 0px; font-size: 34px; background: none repeat scroll 0% 0% rgb(0, 153, 0); color: rgb(255, 255, 255);}
 .img-first img { width:100% !important; height:auto;}
 .dwn-file{font-weight: bold; font-size: 12px; margin-top: 25px;}
@@ -80,3 +80,49 @@
 		  padding:0px;
 		  background-color: #FFFFFF;
 		}
+		#mask3 {
+		  position:absolute;
+		  left:0;
+		  top:0;
+		  z-index:99998;
+		  background-color: #4D4D4D;
+		  display:none;
+		  
+		}  
+		#boxes3 .window3{
+		  position:absolute;
+		  left:0;
+		  top:0;
+		  width:500px;
+		  height:330px;
+		  display:none;
+		  z-index:99999;
+		  padding:10px;
+		  -moz-border-radius: 10px;
+		  -webkit-border-radius: 10px;
+		  border-radius: 10px;
+		  border: 2px solid #333333;
+		  
+		  -moz-box-shadow:4px 4px 30px #130507;
+			-webkit-box-shadow:4px 4px 30px #130507;
+		  box-shadow:4px 4px 30px #130507;
+			-moz-transition:top 800ms;
+			-o-transition:top 800ms;
+			-webkit-transition:top 800ms;
+		  transition:top 800ms;
+		}
+		#boxes3 #dialog3 {
+		  width:320px; 
+		  height:auto;
+		  padding:0px;
+		  background-color: #FFFFFF;
+		}
+.ex6_errmsg{visibility: visible; left: 200px !important; position: relative !important; top: -63.733px !important; color: red;}
+.almem{color: #868686;font-family: "opensansregularregular";font-size: 12px;line-height: 47px;}
+.custl{color:#727272;font-weight:700;}
+.addusernew{width:100%;}
+.addusernew input { width: 475px !important; height: 21px !important; padding-top: 15px !important; padding-bottom: 15px !important; }
+.addmain{box-shadow: none !important;
+	-o-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;width:100% !important;}

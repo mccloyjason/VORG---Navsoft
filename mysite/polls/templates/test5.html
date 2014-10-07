@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>jQuery Move DIV FROM Left to Right & Right to Left</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<style>
+.slide {
+  position: relative;
+}
+.slide .inner {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+</style>
+<script>
+$(document).ready(function() {
+  $('#slideleft button').click(function() {
+    var $lefty = $(this).next();
+    $lefty.animate({
+      left: parseInt($lefty.css('left'),10) == 0 ?
+        -$lefty.outerWidth() :
+        0
+    });
+  });
+});
+</script>
+ <button>slide it</button>
+<div id="slideleft " class="slide" style="display:none;">
+ 
+  <div class="inner">Slide from bottom</div>
+</div>

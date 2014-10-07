@@ -1,0 +1,67 @@
+<link href="{{STATIC_URL}}polls/style.css" rel="stylesheet" type="text/css">
+<link href="{{STATIC_URL}}polls/reset.css" rel="stylesheet" type="text/css" />
+<link href="{{STATIC_URL}}polls/screen.css" rel="stylesheet" type="text/css" />
+<script src="{{STATIC_URL}}polls/jquery.min.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}polls/html5.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}polls/jquery.bvalidator.js" type="text/javascript"></script>
+<table border=1>
+<tr>
+<td name="tcol1" id="tcol1" class="bold">column 1 text</td>
+<td name="tcol2" id="tcol2">column 2 text</td>
+<td name="tcol3" id="tcol3" class="italic">column 3 text</td>
+<td name="tcol4" id="tcol4">column 4 text</td>
+</tr>
+<tr>
+<td name="tcol1" id="tcol1" class="bold">column 1 text</td>
+<td name="tcol2" id="tcol2">column 2 text</td>
+<td name="tcol3" id="tcol3" class="italic">column 3 text</td>
+<td name="tcol4" id="tcol4">column 4 text</td>
+</tr>
+</table>
+<form name="tcol" onsubmit="return false">
+Show columns
+<input type=checkbox name="col1" onclick="toggleVis(this.name)" checked> 1
+<input type=checkbox name="col2" onclick="toggleVis(this.name)" checked> 2
+<input type=checkbox name="col3" onclick="toggleVis(this.name)" checked> 3
+<input type=checkbox name="col4" onclick="toggleVis(this.name)" checked> 4
+</form>
+<script language="javascript">
+
+// Set the default "show" mode to that specified by W3C DOM
+// compliant browsers
+
+var showMode = 'table-cell';
+
+// However, IE5 at least does not render table cells correctly
+// using the style 'table-cell', but does when the style 'block'
+// is used, so handle this
+
+if (document.all) showMode='block';
+
+// This is the function that actually does the manipulation
+
+function toggleVis(btn){
+
+	// First isolate the checkbox by name using the
+	// name of the form and the name of the checkbox
+
+	btn   = document.forms['tcol'].elements[btn];
+
+	// Next find all the table cells by using the DOM function
+	// getElementsByName passing in the constructed name of
+	// the cells, derived from the checkbox name
+
+	cells = document.getElementsByName('t'+btn.name);
+
+	// Once the cells and checkbox object has been retrieved
+	// the show hide choice is simply whether the checkbox is
+	// checked or clear
+
+	mode = btn.checked ? showMode : 'none';
+
+	// Apply the style to the CSS display property for the cells
+
+	for(j = 0; j < cells.length; j++) cells[j].style.display = mode;
+}
+
+</script>

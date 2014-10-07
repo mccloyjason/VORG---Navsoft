@@ -1,0 +1,260 @@
+</head>
+
+<body>
+
+<div class="adminloginwrapp">
+	
+    <!--admin login panel div start here-->
+    <section class="adminloginpanel addmain">
+    	
+        <div class="containerpaneldiv addusernew">
+		{% csrf_token %}
+			
+            	<label style="color:#FF0000">{{msg}}</label>
+            
+			<span style="color:red" id="error"></span>
+			<div class="loginhgtdiv">
+            	<label for="first_name">First Name</label>
+                <input type="text"  name="first_name" id="first_name" onblur="return checkname();" value="" />
+            </div>
+			<div class="loginhgtdiv">
+            	<label for="last_name">Last Name</label>
+                <input type="text"  name="last_name" id="last_name" onblur="return checklname();" value="" />
+            </div>
+			<div class="loginhgtdiv">
+            	<label for="username">Username</label>
+                <input type="text"  name="username" id="username" onblur="return chkuser();" value="" />
+            </div>
+			<div class="loginhgtdiv">
+            	<label for="email">Email</label>
+                <input type="text"  name="email" id="email" onblur="return checkemail();" value="" />
+            </div>
+			<div class="loginhgtdiv">
+            	<label for="role">Role</label>
+                <input type="text"  name="role" id="role" onblur="return chkrole();" value="" />
+            </div>
+			<div class="loginhgtdiv">
+            	<label for="report_to">Report TO</label>
+                <input type="text"  name="report_to" id="report_to" onblur="return chkreport();" value="" />
+            </div>
+            <div class="loginhgtdiv">
+            	<input type="button" value="Submit" name="submit" onclick="insertuser();" />
+                <div class="clear"></div>
+            </div>
+			
+		</form>
+        </div>
+        
+    </section>
+    <!--admin login panel div end here-->
+
+</div>
+<script type="text/javascript"> 
+	function checkname()
+	{
+		var name;
+		name = $("#first_name").val();
+		if(name == "")
+		{
+			$('#error').html('Please enter First Name!');
+			 //setTimeout(function() {
+				$("#first_name").focus();
+			//}, 0);
+			return false;
+		}
+		else{
+			return true;
+		}
+		
+			
+	}
+	function checklname()
+	{
+		var name;
+		name = $("#last_name").val();
+		if(name == "")
+		{
+			$('#error').html('Please enter Last Name!');
+			 $("#last_name").focus();
+			
+			return false;
+		}
+		else{
+		return true;
+		}
+			
+	}
+	function chkuser()
+	{
+		var username
+		username = $("#username").val();
+		if(username == "")
+		{
+			$('#error').html('Please enter Username!');
+			$('#username').focus();
+			
+			return false;
+		}
+		else
+		{
+			$.ajax({
+			url:"/register/chk_user/",
+			type: "POST",
+			data: {username: username,csrfmiddlewaretoken: '{{ csrf_token }}'},
+			success:function(response){
+				if(response == "no")
+					return true;
+				else
+					$('#error').html('Username Already Exist!');
+					$('#username').focus();
+					
+					return false;
+			},
+			complete:function(){},
+			error:function (xhr, textStatus, thrownError){
+			
+			}
+			});
+		}
+		
+		
+	}
+	function checkemail()
+	{
+		var email;
+		email = $("#email").val();
+		var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+		if(email == "" || !re.test(email))
+		{
+			$('#error').html('Please enter Valid Email Address!');
+			$('#email').focus();
+			
+			return false;
+		}
+		
+		else{
+			$.ajax({
+				url:"/register/chk_email/",
+				type: "POST",
+				data: {email: email,csrfmiddlewaretoken: '{{ csrf_token }}'},
+				success:function(response){
+					if(response == "no")
+						return true;
+					else
+						$('#error').html('Email Already Exist!');
+						$('#email').focus();
+						
+						return false;
+				},
+				complete:function(){},
+				error:function (xhr, textStatus, thrownError){
+				
+				}
+			});
+		}
+			
+	}
+	function chkrole ()
+	{
+		var role;
+		role = $("#role").val();
+		if(role == "")
+		{
+			$('#error').html('Please enter Role of user!');
+			$('#role').focus();
+			
+			return false;
+		}
+		
+		else{
+		return true;
+		}
+			
+	}
+	function chkreport ()
+	{
+		var report;
+		report = $("#report_to").val();
+		if(report == "")
+		{
+			$('#error').html('Please enter Report TO!');
+			$('#report_to').focus();
+			
+			return false;
+		}
+		
+		else{
+		return true;
+		}
+			
+	}
+	function insertuser()
+	{	
+		var name;
+		name = $("#first_name").val();
+		if(name == "")
+		{
+			$('#error').html('Please enter First Name!');
+			$("#first_name").focus();
+		}
+		var name;
+		name = $("#last_name").val();
+		if(name == "")
+		{
+			$('#error').html('Please enter Last Name!');
+			$("#last_name").focus();
+		}
+		var username
+		username = $("#username").val();
+		if(username == "")
+		{
+			$('#error').html('Please enter Username!');
+			$('#username').focus();
+		}
+		var email;
+		email = $("#email").val();
+		var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+		if(email == "" || !re.test(email))
+		{
+			$('#error').html('Please enter Valid Email Address!');
+			$('#email').focus();
+		}
+		var role;
+		role = $("#role").val();
+		if(role == "")
+		{
+			$('#error').html('Please enter Role of user!');
+			$('#role').focus();
+		}
+		var report;
+		report = $("#report_to").val();
+		if(report == "")
+		{
+			$('#error').html('Please enter Report TO!');
+			$('#report_to').focus();
+		}
+		var first_name = $("#first_name").val();
+		var last_name = $("#last_name").val();
+		var username = $("#username").val();
+		var email = $("#email").val();
+		var role = $("#role").val();
+		var report_to = $("#report_to").val();
+		$.ajax({
+			url:"/home/insertuser/",
+			type: "POST",
+			data: {first_name: first_name,last_name:last_name,username:username,email:email,role:role,report_to:report_to,csrfmiddlewaretoken: '{{ csrf_token }}'},
+			success:function(response){
+				$("#primary-org a").trigger('click');
+			},
+			complete:function(){},
+			error:function (xhr, textStatus, thrownError){
+			
+			}
+		});
+	}
+	
+		
+</script>
+</body>
+</html>
+ 

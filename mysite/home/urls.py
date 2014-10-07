@@ -25,6 +25,9 @@ urlpatterns = patterns('',
 	url(r'^activeslt/$', views.activeslt, name='activeslt'),
 	url(r'^inactiveslt/$', views.inactiveslt, name='inactiveslt'),
 	url(r'^priorg/$', views.priorg, name='priorg'),
+	url(r'^priorgdy/$', views.priorgdy, name='priorgdy'),
+	url(r'^getuser/$', views.getuser, name='getuser'),
+	url(r'^insertuser/$', views.insertuser, name='insertuser'),
 
 		
 	  

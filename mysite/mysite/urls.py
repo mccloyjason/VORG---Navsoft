@@ -11,6 +11,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^', include('welcome.urls')),
 	url(r'^login/', include('login.urls')),
+	url(r'^register/', include('register.urls')),
+	url(r'^usertree/', include('usertree.urls')),
 )
 if settings.DEBUG:
     urlpatterns += patterns('',

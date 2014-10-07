@@ -15,8 +15,7 @@ html {
 body {
 	background:#ffffff;
 	height:100%;
-	font-family: opensansregularregular !important;
-	font-size:12px !important;
+	font:1.08em/1em Arial, Helvetica, sans-serif !important;
 	color:#666;
 	margin:0;
 	padding:0;
@@ -105,13 +104,13 @@ body {
 	vertical-align:middle;
 }
 .adminloginpanel {
-	width:524px;
+	width:475px;
 	margin:0 auto 0;
 	background-color:#000;
-	box-shadow: 2px 2px 10px #c7c7c7;
-	-o-box-shadow: 2px 2px 10px #c7c7c7;
-	-webkit-box-shadow: 2px 2px 10px #c7c7c7;
-	-moz-box-shadow: 2px 2px 10px #c7c7c7;
+	box-shadow: 2px 9px 21px #999;
+	-o-box-shadow: 2px 9px 21px #999;
+	-webkit-box-shadow: 2px 9px 21px #999;
+	-moz-box-shadow: 2px 9px 21px #999;
  filter:
  progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=1, Color=#C4C4C4), progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=90, Color=#C4C4C4), progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=180, Color=#C4C4C4), progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=270, Color=#C4C4C4);
  -ms-filter: 
@@ -144,7 +143,7 @@ body {
 .adminloginpanel .containerpaneldiv .loginhgtdiv input[type="text"], .adminloginpanel .containerpaneldiv .loginhgtdiv input[type="password"] {
 	border:1px solid #d1d1d1;
 	background-color:#f9f9f9;
-	width:95%;
+	width:100%;
 	padding:2%;
 	font-family:'opensansregularregular';
 	font-size:14px;
@@ -174,6 +173,7 @@ body {
 	padding:8px 0;
 	cursor:pointer;
 	border:0px;
+	
 }
 .adminloginpanel .footerdiv {
 	border-top:1px solid #ebebeb;
@@ -662,7 +662,7 @@ aside.sleekmenuset > .mainwrappcont > .leftmenuscroll, aside.sleekmenuset > .mai
 	background-position:20px 50%;
 	text-transform:uppercase;
 }
-.topbluepanel .toplinkpanel li a:hover {
+.topbluepanel .toplinkpanel li a:hover , .topbluepanel .toplinkpanel li a.active{
 	background-color:#0071c8;
 }
 .topbluepanel .toplinkpanel li a.mystatisicon {
@@ -753,7 +753,7 @@ aside.sleekmenuset > .mainwrappcont > .leftmenuscroll, aside.sleekmenuset > .mai
 }
 /* grid styles */
 .theGrid {
-	width:978px;
+	width:100%;
 	padding:0;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -934,7 +934,7 @@ aside.sleekmenuset > .mainwrappcont > .leftmenuscroll, aside.sleekmenuset > .mai
 	height: 30px;
 	margin: 0px;
 	padding: 0px;
-	left: 174px;
+	left: 202px;
 	position: relative;
 	background: url(/static/polls/images/search_icon.png) no-repeat 0px 7px;
 	border: none;
@@ -983,14 +983,13 @@ table {
 	border-collapse:separate;
 *border-collapse:collapsed;
 	width:100%;
-	font-size:14px;
 }
 .table-bordered th+th, .table-bordered td+td, .table-bordered th+td, .table-bordered td+th {
 	border-left:1px solid #ddd;
 }
 .table-bordered thead:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child td {
 	border-top:0;
-	padding:10px;
+	padding:0px;
 	text-align:left;
 }
 .table-bordered thead:first-child tr:first-child th:first-child, .table-bordered tbody:first-child tr:first-child td:first-child {
@@ -1002,7 +1001,10 @@ table {
 /*	-webkit-border-radius:0 4px 0 0;
 	-moz-border-radius:0 4px 0 0;
 	border-radius:0 4px 0 0;
-*/}
+*/
+font-weight:normal;
+font-size:14px;
+}
 .table-bordered thead:last-child tr:last-child th:first-child, .table-bordered tbody:last-child tr:last-child td:first-child {
 	-webkit-border-radius:0 0 0 4px;
 	-moz-border-radius:0 0 0 4px;
@@ -1017,11 +1019,13 @@ table {
 	background-color:#f9f9f9;
 	border-bottom:1px solid #e6e6e6;
 	height:40px;
-	padding:0px 0px 0px 10px
+	padding:0px 0px 0px 10px;
+font-size: 14px;
 }
 .table-striped tbody tr:nth-child(even) td, .table-striped tbody tr:nth-child(even) th {
 	height:40px;
 	padding:0px 0px 0px 10px;
+font-size: 14px;
 }
 .table tbody tr:hover td, .table tbody tr:hover th {
 	background-color:#f5f5f5;
@@ -1148,7 +1152,7 @@ table .span12 {
 #flip-scroll th {
 	display: block;
 	text-align: left;
-	padding:10px 10px;
+	padding:0px 0px;
 	border-bottom:1px solid #014e82;
 }
 #flip-scroll tbody tr {
@@ -1186,7 +1190,7 @@ table .span12 {
 }
 .paginetion {
 	width:100%;
-	margin:0px;
+	margin-top:8px;
 	padding:0px;
 	height:auto;	
 }
@@ -1200,7 +1204,7 @@ table .span12 {
 .page_btn {
 	background:#77ba31;
 	color:#FFF;
-	width:93px;
+	width:auto;
 	height:32px;
 	font-weight:bold;
 	border:none;
@@ -1342,10 +1346,12 @@ table .span12 {
 }
 
 #nav li a {
- padding: 1em 2em 1em 1em;
+ padding: 10px 10px 10px 12px;/*1em 2em 1em 1em;*/
  text-decoration: none;
  color: #FFFFFF;
  background: #0071c8;
+ font-size: 14px;
+font-weight: normal;
 }
 
 /* Submenu */
@@ -1365,6 +1371,7 @@ table .span12 {
  top: 100%;
  padding: 0; margin: 0;
  border:solid 1px #d4d4d4;
+ width:137px;
 }
 
 #nav li:hover > ul {
@@ -1392,6 +1399,8 @@ table .span12 {
 #nav li ul li a {
  width: auto;
  display: block;
+font-size: 12px;
+font-weight: normal;
 }
 #nav li ul li ul li p {
 	width:100%;

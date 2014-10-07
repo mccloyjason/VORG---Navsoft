@@ -25,7 +25,7 @@
 								</li>-->
 								<div class="clear"></div>
 							  </ul>
-								<input type="search" name="input-filter" id="input-filter" placeholder="Search" class="search_box" />
+							  <input type="search" id="input-filter" placeholder="Search" class="search_box" />
 								<input type="submit" value="" id="txtsubmit" name="txtsubmit" class="search_btn" />
 							  <div class="clear"></div>
 							</div>
@@ -33,7 +33,7 @@
                  <!--New-->
                     <div class="new_table_wi">
                     <section id="flip-scroll">
-                    	 <table class="table-bordered table-striped table-condensed cf" id="tbl">
+                    	 <table class="table-bordered table-striped table-condensed cf">
 						  <thead class="cf">
 							  <tr class="cf_bg_colro">
 								  <th><input type="checkbox"  id="selectall" class="re_magin" style="margin-left:14px;"/></th>
@@ -41,23 +41,22 @@
                       	<ul id="nav">
 							<li><a href="#">Name</a>
                             	<ul>
-                                	<li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a>
+                                	<li><a href="javascript:void(0);" onclick="sortorder('username','?page={{page}}')">Sort Ascending</a></li>
+                                    <li><a href="javascript:void(0);" onclick="sortorder('-username','?page={{page}}')">Sort Descending </a></li>
+                                    <li><a href="#">Columns</a>
                                     	<ul>
-                                        	<li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
+                                        	<li><p><input type="checkbox" name="check2" id="check2" checked="checked" onclick="hideshowtd(2)" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
+                                            <li><p><input type="checkbox" name="check3" id="check3" checked="checked" onclick="hideshowtd(3)" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
+                                            <li><p><input type="checkbox" name="check4" id="check4" checked="checked" onclick="hideshowtd(4)" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
+                                            <li><p><input type="checkbox" name="check5" id="check5" checked="checked" onclick="hideshowtd(5)" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
+                                            <li><p><input type="checkbox" name="check6" id="check6" checked="checked" onclick="hideshowtd(6)" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
-                                            
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Actions</span></p></li>
+                                            <li><p><input type="checkbox" name="check7" id="check7" checked="checked" onclick="hideshowtd(7)" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
+                                           
                                         </ul>
                                     </li>
                                 </ul>
@@ -68,23 +67,23 @@
                       <ul id="nav">
 							<li><a href="#">Role</a>
                             	<ul>
-                                	<li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a>
+                                	<li><a href="javascript:void(0);" onclick="sortorder('role','?page={{page}}')">Sort Ascending</a></li>
+                                    <li><a href="javascript:void(0);" onclick="sortorder('-role','?page={{page}}')">Sort Descending </a></li>
+                                    <li><a href="#">Columns</a>
                                     	<ul>
-                                        	<li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
+                                        	<li><p><input type="checkbox" name="check2" id="check2" checked="checked" onclick="hideshowtd(2)" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
+                                            <li><p><input type="checkbox" name="check3" id="check3" checked="checked" onclick="hideshowtd(3)" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
+                                            <li><p><input type="checkbox" name="check4" id="check4" checked="checked" onclick="hideshowtd(4)" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
+                                            <li><p><input type="checkbox" name="check5" id="check5" checked="checked" onclick="hideshowtd(5)" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
+                                            <li><p><input type="checkbox" name="check6" id="check6" checked="checked" onclick="hideshowtd(6)" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
+                                            <li><p><input type="checkbox" name="check7" id="check7" checked="checked" onclick="hideshowtd(7)" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Actions</span></p></li>
+                                           
                                         </ul>
                                     </li>
                                 </ul>
@@ -95,23 +94,23 @@
                       <ul id="nav">
 							<li><a href="#">Report To</a>
                             	<ul>
-                                	<li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a>
+                                	<li><a href="javascript:void(0);" onclick="sortorder('report_to','?page={{page}}')">Sort Ascending</a></li>
+                                    <li><a href="javascript:void(0);" onclick="sortorder('-report_to','?page={{page}}')">Sort Descending </a></li>
+                                    <li><a href="#">Columns</a>
                                     	<ul>
-                                        	<li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
+                                        	<li><p><input type="checkbox" name="check2" id="check2" checked="checked" onclick="hideshowtd(2)" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
+                                            <li><p><input type="checkbox" name="check3" id="check3" checked="checked" onclick="hideshowtd(3)" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
+                                            <li><p><input type="checkbox" name="check4" id="check4" checked="checked" onclick="hideshowtd(4)" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
+                                            <li><p><input type="checkbox" name="check5" id="check5" checked="checked" onclick="hideshowtd(5)" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
+                                            <li><p><input type="checkbox" name="check6" id="check6" checked="checked" onclick="hideshowtd(6)" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
+                                            <li><p><input type="checkbox" name="check7" id="check7" checked="checked" onclick="hideshowtd(7)" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Actions</span></p></li>
+                                            
                                         </ul>
                                     </li>
                                 </ul>
@@ -122,23 +121,23 @@
                       <ul id="nav">
 							<li><a href="#">Email</a>
                             	<ul>
-                                	<li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a>
+                                	<li><a href="javascript:void(0);" onclick="sortorder('email','?page={{page}}')">Sort Ascending</a></li>
+                                    <li><a href="javascript:void(0);" onclick="sortorder('-email','?page={{page}}')">Sort Descending </a></li>
+                                    <li><a href="#">Columns</a>
                                     	<ul>
-                                        	<li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
+                                        	<li><p><input type="checkbox" name="check2" id="check2" checked="checked" onclick="hideshowtd(2)" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
+                                            <li><p><input type="checkbox" name="check3" id="check3" checked="checked" onclick="hideshowtd(3)" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
+                                            <li><p><input type="checkbox" name="check4" id="check4" checked="checked" onclick="hideshowtd(4)" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
+                                            <li><p><input type="checkbox" name="check5" id="check5" checked="checked" onclick="hideshowtd(5)" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
+                                            <li><p><input type="checkbox" name="check6" id="check6" checked="checked" onclick="hideshowtd(6)" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
+                                            <li><p><input type="checkbox" name="check7" id="check7" checked="checked" onclick="hideshowtd(7)" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Actions</span></p></li>
+                                            
                                         </ul>
                                     </li>
                                 </ul>
@@ -149,23 +148,23 @@
                       <ul id="nav">
 							<li><a href="#">Creation Date</a>
                             	<ul>
-                                	<li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a>
+                                	<li><a href="javascript:void(0);" onclick="sortorder('date','?page={{page}}')">Sort Ascending</a></li>
+                                    <li><a href="javascript:void(0);" onclick="sortorder('-date','?page={{page}}')">Sort Descending </a></li>
+                                    <li><a href="#">Columns</a>
                                     	<ul>
-                                        	<li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
+                                        	<li><p><input type="checkbox" name="check2" id="check2" checked="checked" onclick="hideshowtd(2)" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
+                                            <li><p><input type="checkbox" name="check3" id="check3" checked="checked" onclick="hideshowtd(3)" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
+                                            <li><p><input type="checkbox" name="check4" id="check4" checked="checked" onclick="hideshowtd(4)" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
+                                            <li><p><input type="checkbox" name="check5" id="check5" checked="checked" onclick="hideshowtd(5)" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
+                                            <li><p><input type="checkbox" name="check6" id="check6" checked="checked" onclick="hideshowtd(6)" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
+                                            <li><p><input type="checkbox" name="check7" id="check7" checked="checked" onclick="hideshowtd(7)" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Actions</span></p></li>
+                                           
                                         </ul>
                                     </li>
                                 </ul>
@@ -176,56 +175,30 @@
                       <ul id="nav">
 							<li><a href="#">Status</a>
                             	<ul>
-                                	<li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a>
+                                	<li><a href="javascript:void(0);" onclick="sortorder('status','?page={{page}}')">Sort Ascending</a></li>
+                                    <li><a href="javascript:void(0);" onclick="sortorder('-status','?page={{page}}')">Sort Descending </a></li>
+                                    <li><a href="#">Columns</a>
                                     	<ul>
-                                        	<li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
+                                        	<li><p><input type="checkbox" name="check2" id="check2" checked="checked" onclick="hideshowtd(2)" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
+                                            <li><p><input type="checkbox" name="check3" id="check3" checked="checked" onclick="hideshowtd(3)" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
+                                            <li><p><input type="checkbox" name="check4" id="check4" checked="checked" onclick="hideshowtd(4)" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
+                                            <li><p><input type="checkbox" name="check5" id="check5" checked="checked" onclick="hideshowtd(5)" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
+                                            <li><p><input type="checkbox" name="check6" id="check6" checked="checked" onclick="hideshowtd(6)" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
+                                            <li><p><input type="checkbox" name="check7" id="check7" checked="checked" onclick="hideshowtd(7)" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
                                             
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Actions</span></p></li>
+                                            
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                       </th>
-					  <th class="numeric">
-                      <ul id="nav">
-							<li><a href="#">Actions</a>
-                            	<ul>
-                                	<li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a></li>
-                                    <li><a href="#">Test</a>
-                                    	<ul>
-                                        	<li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>User Name</span></p></li>
-                                            
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Role</span></p></li>
-                                            
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Report To</span></p></li>
-                                            
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Email</span></p></li>
-                                            
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Creation Date</span></p></li>
-                                            
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Status</span></p></li>
-                                            
-                                            <li><p><input type="checkbox" name="check" class="re_magin" style="margin-left:5px;" /> <span>Actions</span></p></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                      </th>
+					  <th style="padding-left: 11px;">Actions</th>
 							  </tr>
 						  </thead>
 						  <tbody>
@@ -268,7 +241,7 @@
                 <div class="paginetion">
               		<!--Left-->
                     <div class="paginetion_left">
-                    	<input type="submit" id="submit" name="submit" value="ADD NEW" class="page_btn" />
+                    	<input type="button" id="submit" name="submit" value="Bulk User Upload" class="page_btn" onclick="getnewuser()"/>
                     </div>
                     <!--Left-->
                     <!--Right-->
@@ -310,6 +283,7 @@
         }
     });
     	});
+	
 function getpg(str)
 {
 		$.ajax({
@@ -326,5 +300,82 @@ function getpg(str)
 					
 					}
 				});
+}
+function sortorder(order,str)
+{
+	$.ajax({
+					url:"/home/priorgdy/"+str,
+					type: "POST",
+					data: {order:order,csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#primaryorg").html(response);
+					$("#primaryorg").show();
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+}
+function hideshowtd(no)
+{	
+		var chk=$('input:checkbox[name=check'+no+']').is(':checked');
+		 var second = $('td:nth-child('+no+'),th:nth-child('+no+')').is(':hidden');
+		//alert(second);
+		if(second == false){
+			$('input:checkbox[name=check'+no+']').attr('checked',false);
+			$('td:nth-child('+no+'),th:nth-child('+no+')').hide();
+		}
+		else{
+			$('input:checkbox[name=check'+no+']').attr('checked',true);
+			$('td:nth-child('+no+'),th:nth-child('+no+')').show();
+		}
+		
+
+	
+}
+function getnewuser()
+{
+	var id = '#dialog';
+		
+			//Get the screen height and width
+			var maskHeight = $(document).height();
+			var maskWidth = $(window).width();
+		
+			//Set heigth and width to mask to fill up the whole screen
+			$('#mask').css({'width':maskWidth,'height':maskHeight});
+			
+			//transition effect		
+			$('#mask').fadeIn(800);	
+			$('#mask').fadeTo("slow",0.8);	
+		
+			//Get the window height and width
+			var winH = $(window).height();
+			var winW = $(window).width();
+				  
+			//Set the popup window to center
+			$(id).css('top',  winH/2-$(id).height()/2 -50);
+			$(id).css('left', winW/2-$(id).width()/2);
+		
+			//transition effect
+			$(id).fadeIn(500); 	
+		
+		//if close button is clicked
+		$('.window .close').click(function (e) {
+			//Cancel the link behavior
+			e.preventDefault();
+			
+			$('#mask').hide();
+			$('#dialog').hide();
+		});		
+		
+		//if mask is clicked
+		$('#mask').click(function () {
+			$(this).preventDefault();
+			$(this).hide();
+			$('#dialog').hide();
+		});		
+		
 }
 </script>

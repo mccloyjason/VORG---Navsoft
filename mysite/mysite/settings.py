@@ -39,6 +39,10 @@ INSTALLED_APPS = (
     'polls',
 	'home',
 	'login',
+	'register',
+	'mptt',
+	'usertree',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +53,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'django.middleware.locale.LocaleMiddleware'
+)
+
+LOCALE_PATHS = (
+    '/Python34/Scripts/mysite/home/locale/',
+  
 )
 
 ROOT_URLCONF = 'mysite.urls'
@@ -69,7 +79,11 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER ='hima.shah@navsoft.in'
+EMAIL_HOST_PASSWORD='manibhadravir'
+EMAIL_USE_TLS=True
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -93,6 +107,7 @@ STATIC_ROOT="/mysite/polls/static/"
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
+"/opt/webfiles/common",
 )
 
 STATICFILES_FINDERS = ( 
@@ -103,7 +118,7 @@ STATICFILES_FINDERS = (
 PROJECT_DIR = os.path.dirname(__file__)
 
 TEMPLATE_DIRS = ( 
-    'Python34/Scripts/mysite/polls/templates/',
+    '/Python34/Scripts/mysite/polls/templates/',
 )
 LOGIN_URL = 'mysite_login'
 LOGOUT_URL = 'mysite_logout'
@@ -114,5 +129,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.static',
-    'django.contrib.auth.context_processors.auth',
+ 	'django.core.context_processors.request',
 )

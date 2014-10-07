@@ -3,17 +3,20 @@
        
 						 <div class="theGrid"  id="primaryorg">
 							
-							</div>
+						</div>
+						 <div class="theGrid"  id="adduser">
+							
+						</div>
               <div class="clear"></div>
                     </section>
                 
                 
             </section>
-            
+           
             </section>
         </section>
         <!--section right panel end here-->
-    
+   
     </section>
     </section>
 	<div id="boxes">
@@ -67,8 +70,39 @@
 	<!-- Mask to cover the whole screen -->
 	<div style="width: 2000px; height: 2000px; display: none; opacity: 0.7;" id="mask1"></div>
 	</div>
+	
+	
+	<!-- Box3 -->
+	<div id="boxes3">
+	<div  id="dialog3" class="window3 win-main">
+	<div class="setup-head"> Initial Setup Wizard</div>
+	<div align="right" class="close-btn"><a href="javascript:void()" class="close"><img src="{{STATIC_URL}}polls/images/close_btn.png" width="16" style="border:none; cursor:pointer;" /></a></div>
+	
+	<div align="center" class="step1-text">
+	<div class="click-text">
+		<div class="img-first"><img src="{{STATIC_URL}}polls/images/success.png"></div>
+		<div class="dwn-file">Your VisualORG system has been completed successfully!<br/>
+		1. out of {{total}}, {{inserted}} entry done successfully.
+		<br/>
+		2. out of {{total}}, {{repeat}} entry is duplicate.
+		<br/>
+		3. out of {{total}}, {{valid}} entry was not having valid details. 
+		<br/>
+		4. Now your total record in {{count}} with success.!!
+		</div>
+		<div></div>
+	</div>
+	</div>
+	
+	</div>
+	
+	<!-- Mask to cover the whole screen -->
+	<div style="width: 2000px; height: 2000px; display: none; opacity: 0.7;" id="mask3"></div>
+	</div>
+	<!-- End Box3-->
     <!--content panel end here-->
-
+<input type="hidden" name="flag" value="{{ count }}" />
+<input type="hidden" name="success" value="{{ success }}" />
 </section>
 
 <script type="text/javascript" src="{{STATIC_URL}}polls/jquery.min.js"></script>
@@ -99,46 +133,91 @@
         });
 			
 	$('#cpform').bValidator();
-			var id = '#dialog';
-		
-			//Get the screen height and width
-			var maskHeight = $(document).height();
-			var maskWidth = $(window).width();
-		
-			//Set heigth and width to mask to fill up the whole screen
-			$('#mask').css({'width':maskWidth,'height':maskHeight});
-			
-			//transition effect		
-			$('#mask').fadeIn(800);	
-			$('#mask').fadeTo("slow",0.8);	
-		
-			//Get the window height and width
-			var winH = $(window).height();
-			var winW = $(window).width();
-				  
-			//Set the popup window to center
-			$(id).css('top',  winH/2-$(id).height()/2 -50);
-			$(id).css('left', winW/2-$(id).width()/2);
-		
-			//transition effect
-			$(id).fadeIn(500); 	
-		
-		//if close button is clicked
-		$('.window .close').click(function (e) {
-			//Cancel the link behavior
-			e.preventDefault();
-			
-			$('#mask').hide();
-			$('#dialog').hide();
-		});		
-		
-		//if mask is clicked
-		$('#mask').click(function () {
-			$(this).preventDefault();
-			$(this).hide();
-			$('#dialog').hide();
-		});		
-		
+	var flag = 1;//$("[name='flag']").val()
+	var success = $("[name='success']").val();
+	if(flag == 0){
+	
+					var id = '#dialog';
+				
+					//Get the screen height and width
+					var maskHeight = $(document).height();
+					var maskWidth = $(window).width();
+				
+					//Set heigth and width to mask to fill up the whole screen
+					$('#mask').css({'width':maskWidth,'height':maskHeight});
+					
+					//transition effect		
+					$('#mask').fadeIn(800);	
+					$('#mask').fadeTo("slow",0.8);	
+				
+					//Get the window height and width
+					var winH = $(window).height();
+					var winW = $(window).width();
+						  
+					//Set the popup window to center
+					$(id).css('top',  winH/2-$(id).height()/2 -50);
+					$(id).css('left', winW/2-$(id).width()/2);
+				
+					//transition effect
+					$(id).fadeIn(500); 	
+				
+				//if close button is clicked
+				$('.window .close').click(function (e) {
+					//Cancel the link behavior
+					e.preventDefault();
+					
+					$('#mask').hide();
+					$('#dialog').hide();
+				});		
+				
+				//if mask is clicked
+				$('#mask').click(function () {
+					$(this).preventDefault();
+					$(this).hide();
+					$('#dialog').hide();
+				});		
+		}
+		if(success == 'true'){
+					var id = '#dialog3';
+				
+					//Get the screen height and width
+					var maskHeight = $(document).height();
+					var maskWidth = $(window).width();
+				
+					//Set heigth and width to mask to fill up the whole screen
+					$('#mask3').css({'width':maskWidth,'height':maskHeight});
+					
+					//transition effect		
+					$('#mask3').fadeIn(800);	
+					$('#mask3').fadeTo("slow",0.8);	
+				
+					//Get the window height and width
+					var winH = $(window).height();
+					var winW = $(window).width();
+						  
+					//Set the popup window to center
+					$(id).css('top',  winH/2-$(id).height()/2 -50);
+					$(id).css('left', winW/2-$(id).width()/2);
+				
+					//transition effect
+					$(id).fadeIn(500); 	
+				
+				//if close button is clicked
+				$('.window3 .close').click(function (e) {
+					//Cancel the link behavior
+					e.preventDefault();
+					
+					$('#mask3').hide();
+					$('#dialog3').hide();
+				});		
+				
+				//if mask is clicked
+				$('#mask3').click(function () {
+					$(this).preventDefault();
+					$(this).hide();
+					$('#dialog3').hide();
+				});		
+		}
 		$("#continue").click(function(){
 		
 			$('#dialog').hide();

@@ -11,7 +11,7 @@ from django.core.context_processors import csrf
 from django.core.mail import send_mail,EmailMultiAlternatives
 
 def index(request):
-	return render(request, 'register.html',{'msg':''})
+	return render(request, 'preregister.html',{'msg':''})
 def signup(request):
 	first_name = request.POST.get('First_name', '')
 	last_name = request.POST.get('Last_name', '')
@@ -37,6 +37,13 @@ def chk_user(request):
 		return HttpResponse('yes')
 	else:
 		return HttpResponse('no')
+def chk_email(request):
+	email = request.POST['email']
+	details = User.objects.filter(email=email).count()
+	if details > 0:
+		return HttpResponse('yes')
+	else:
+		return HttpResponse('no')
 def chk_comp(request):
 	comp_name = request.POST['comp_name']
 	details = User.objects.filter(company_name=comp_name).count()
@@ -44,4 +51,13 @@ def chk_comp(request):
 		return HttpResponse('yes')
 	else:
 		return HttpResponse('no')
+def presignup(request):
+	email = request.POST.get('Email', '')
+	msg="Please Verify email address clicking on below link:" + request.get_host() +"/register/confirmregister/" + email
+	send_mail('Register-VORG', msg, 'hima.shah@navsoft.in',[email])
+	return render(request,'registermessage.html')
+def confirmregister(request,id):
+	return render(request, 'register.html',{'msg':'','id':id})
+	
+			
 	

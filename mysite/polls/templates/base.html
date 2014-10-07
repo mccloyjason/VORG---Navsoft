@@ -14,6 +14,20 @@
 <style type="text/css">
 body {display:table;}
 </style>
+<script type="text/javascript"> 
+     var options6 = {
+		offset: {x:5, y:-2},
+        position: {x:'right', y:'center'},
+        template: '<div class="{errMsgClass}">{message}</div>',
+        showCloseIcon: true,
+        classNamePrefix: 'ex6_',
+        validateOn: 'blur'
+    };
+    
+    $(document).ready(function () {
+        $('#cpform').bValidator(options6);
+    });
+</script>
 </head>
 <body>
 <section class="mainwrappcont">
@@ -54,12 +68,12 @@ body {display:table;}
     <section class="maincontentbox">
     
     	<!--aside left panel start here-->
-        <aside class="leftmenpan hiddendiv">
+        <aside class="leftmenpan hiddendiv sleekmenuset">
         	<section class="mainwrappcont">
             <div class="usersstatus">
             	<div class="avtarclass"><a href="#" class="userprofill"><img src="{{STATIC_URL}}polls/images/pic-avatarimg.png" alt=""/></a></div>
                 <div class="avtarnamergt">
-                	<a href="#"  class="userprofill"><span>John Doe</span> <i class="fadownarrow"></i></a>
+                	<a href="#"  class="userprofill"><span>{{questions}}</span> <i class="fadownarrow"></i></a>
                 </div>
                 <div class="clear"></div>
                 <div class="dropdowmenu">
@@ -69,7 +83,7 @@ body {display:table;}
                         <li><a href="#">Profile</a></li>
                         <li><a href="#">Notification</a></li>
                         <li><a href="#">Help</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="/home/logout/">Logout</a></li>
                     </ul>
                 </div>
                 
@@ -95,7 +109,7 @@ body {display:table;}
 				</a>
 				 <div class="submenudiv">
                 	<ul class="sublistlink">
-                    	<li><a href="#"><span>Add User</span></a></li>
+                    	<li><a href="javascript:void(0);" onclick="getadduser('Add User');"><span>Add User</span></a></li>
                        
                     </ul>
                 </div>
@@ -140,14 +154,14 @@ body {display:table;}
             
             	<!--top link start here-->
                 <div class="topbluepanel">
-                	<ul class="toplinkpanel">
-                    	<li class="mobilwidt"><a href="#" class="mystatisicon">My Stats</a></li>
+                	<ul class="toplinkpanel" id="dymenu">
+                    	<!--<li class="mobilwidt"><a href="#" class="mystatisicon">My Stats</a></li>
                         <li class="mobilwidt"><a href="#" class="systemstaticon">System Stats</a></li>
                         <li class="hiddendiv"><a href="#" class="globalicon">Global</a></li>
                         <li class="hiddendiv"><a href="#" class="profileicon">User Profiles</a></li>
                         <li class="hiddendiv"><a href="#" class="organizaticon">Organizations</a></li>
                         <li class="hiddendiv"><a href="#" class="livedocicon">LiveDocs</a></li>
-                        <li class="hiddendiv"><a href="#" class="documenticon">Documents</a></li>
+                        <li class="hiddendiv"><a href="#" class="documenticon">Documents</a></li>-->
                     </ul>
                     <div  class="mobilemorelnk fright">
                     <a href="#">&nbsp;</a>					
@@ -171,8 +185,8 @@ body {display:table;}
                 
                 <section class="topfityone">
                 	<section class="cotentitlepanl">
-                    	<ul id="dymenu"></ul>
-                        <ul class="contentoprightpan">
+                    	<!--<ul id="dymenu"></ul>-->
+                        <!--<ul class="contentoprightpan">
                         	<li>
                             	<div class="imgstatis"><img src="{{STATIC_URL}}polls/images/statisred.png" alt=""/></div>
                                 <div class="statcontent">
@@ -192,16 +206,18 @@ body {display:table;}
                                   </p>
                                 </div>
                             </li>
-                        </ul>
+                        </ul>-->
                         <div class="clear"></div>
 		<script>
 		function getprimaryorg(str)
 		{
+			
 			//alert(str);
 			Text = str.toLowerCase();
 			Text = Text.replace(' ','-');
 			//alert(Text);
-			$("#dymenu").html("<li id="+Text+">"+str+"<a href='javascript:void(0);' onclick='removeli("+'"'+Text+'"'+")'><img src='{{STATIC_URL}}polls/images/close-icon.png'/></a></li>");
+			if($('#primary-org').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='showprimaryorg();'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' style='margin-top: -40px;float:right;' onclick='removeli("+'"'+Text+'"'+")'/></li>");
 			$.ajax({
 					url:"/home/priorg/",
 					type: "POST",
@@ -210,6 +226,68 @@ body {display:table;}
 					//alert(response);
 					$("#primaryorg").html(response);
 					$("#primaryorg").show();
+					$("#adduser").hide();
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+		}
+		function showprimaryorg()
+		{
+				$.ajax({
+					url:"/home/priorg/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#primaryorg").html(response);
+					$("#primaryorg").show();
+					$("#adduser").hide();
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+		}
+	
+		function getadduser(str)
+		{
+			//alert(str);
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#add-user').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='showadduser();'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' style='margin-top: -40px;float:right;' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/getuser/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#primaryorg").hide();
+					$("#adduser").html(response);
+					$("#adduser").show();
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+		}
+		function showadduser()
+		{
+			$.ajax({
+					url:"/home/getuser/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#primaryorg").hide();
+					$("#adduser").html(response);
+					$("#adduser").show();
 					},
 					complete:function(){},
 					error:function (xhr, textStatus, thrownError){
@@ -219,9 +297,61 @@ body {display:table;}
 		}
 		function removeli(str)
 		{
+			var ind=$("#"+str).index();
+			var ind1=ind - 1;
+			//alert(ind1);
 			
-			$("#"+str).hide();
+			$("#"+str).remove();
+			
 			if(str == "primary-org")
 				$("#primaryorg").hide();
+			if(str == "add-user")
+				$("#adduser").hide();
+			var id=$("#dymenu li").eq(ind1).attr("id");
+			//alert(id);
+			$("#"+id+" a").trigger('click');
 		}
+		function getnewuser()
+{
+	var id = '#dialog';
+		
+			//Get the screen height and width
+			var maskHeight = $(document).height();
+			var maskWidth = $(window).width();
+		
+			//Set heigth and width to mask to fill up the whole screen
+			$('#mask').css({'width':maskWidth,'height':maskHeight});
+			
+			//transition effect		
+			$('#mask').fadeIn(800);	
+			$('#mask').fadeTo("slow",0.8);	
+		
+			//Get the window height and width
+			var winH = $(window).height();
+			var winW = $(window).width();
+				  
+			//Set the popup window to center
+			$(id).css('top',  winH/2-$(id).height()/2 -50);
+			$(id).css('left', winW/2-$(id).width()/2);
+		
+			//transition effect
+			$(id).fadeIn(500); 	
+		
+		//if close button is clicked
+		$('.window .close').click(function (e) {
+			//Cancel the link behavior
+			e.preventDefault();
+			
+			$('#mask').hide();
+			$('#dialog').hide();
+		});		
+		
+		//if mask is clicked
+		$('#mask').click(function () {
+			$(this).preventDefault();
+			$(this).hide();
+			$('#dialog').hide();
+		});		
+		
+}
 		</script>

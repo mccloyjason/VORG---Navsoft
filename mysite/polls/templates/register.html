@@ -13,8 +13,16 @@
 body {display:table;}
 </style>
 <script type="text/javascript"> 
+	 var options6 = {
+        offset: {x:5, y:-2},
+        position: {x:'right', y:'center'},
+        template: '<div class="{errMsgClass}">{message}</div>',
+        showCloseIcon: true,
+        classNamePrefix: 'ex6_',
+        validateOn: 'blur'
+    };
     $(document).ready(function () {
-        $('#cpform').bValidator();
+        $('#cpform').bValidator(options6);
     });
 	function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
@@ -79,11 +87,9 @@ body {display:table;}
         <div class="containerpaneldiv">
 		<form action="/register/signup/" method="post" accept-charset="utf-8" name="cpform" id="cpform">
 		{% csrf_token %}
-			<div class="loginhgtdiv">
+			
             	<label style="color:#FF0000">{{msg}}</label>
-                
-            </div>
-			<span style="color:red" id="error"></span>
+            <span style="color:red" id="error"></span>
 			<div class="loginhgtdiv">
             	<label for="company_name">Company Name</label>
                 <input type="text"  name="Company_name" id="company_name" data-bvalidator="required" onblur="return chkcompany()"/>
@@ -102,7 +108,7 @@ body {display:table;}
             </div>
 			<div class="loginhgtdiv">
             	<label for="email">Email</label>
-                <input type="text"  name="Email" id="email" data-bvalidator="email,required"/>
+                <input type="text"  name="Email" id="email" data-bvalidator="email,required" value="{{id}}" readonly/>
             </div>
 			<div class="loginhgtdiv">
             	<label for="password">Password</label>
@@ -114,10 +120,13 @@ body {display:table;}
             </div>
 			
             <div class="loginhgtdiv">
-            	<input type="submit" value="Submit" name="submit" />
+			<div class="rembmebrrpanl">
+					Already Member?<a href="/login/" class='custl'>Login</a>
+				</div>
+            	<input type="submit" value="SUBMIT" name="submit" />
                 <div class="clear"></div>
             </div>
-			<div>Already Member?<a href="/login/">Login</a></div>
+			
 		</form>
         </div>
         
