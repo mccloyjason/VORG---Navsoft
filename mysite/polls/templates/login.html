@@ -23,6 +23,7 @@ body {display:table;}
     };
     $(document).ready(function () {
         $('#cpform').bValidator(options6);
+		$('#error').fadeOut(3500);
     });
 </script>
 </head>
@@ -38,7 +39,7 @@ body {display:table;}
 		<form action="/home/auth/" method="post" accept-charset="utf-8" id="cpform">
 		{% csrf_token %}
 			
-            	<label style="color:#FF0000">{{msg}}</label>
+            	<label style="color:#FF0000" id="error">{{msg}}</label>
             <div class="loginhgtdiv">
             	<label for="email">Email ID</label>
                 <input type="text"  name="Email" id="email" data-bvalidator="email,required"/>

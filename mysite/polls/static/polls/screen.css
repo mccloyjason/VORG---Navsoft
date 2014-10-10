@@ -132,6 +132,7 @@ body {
 .adminloginpanel .containerpaneldiv .loginhgtdiv {
 	padding:0 0 10px;
 }
+
 .adminloginpanel .containerpaneldiv .loginhgtdiv label {
 	display:block;
 	font-family:'opensansregularregular';
@@ -357,7 +358,7 @@ body {
 }
 /* aside left panel */
 .usersstatus {
-	padding:12px 0 15px 21px;
+	padding:12px 0 15px;
 	height:67px;
 	border-bottom:1px solid #cfcfcf;
 	border-top:1px solid #dbdbdb;
@@ -365,8 +366,17 @@ body {
 	position:relative;
 }
 .usersstatus .avtarclass {
-	float:left;
-	width:41px;
+	padding: 0;
+    position: absolute;
+    z-index: 999;
+}
+.avtarclass  a {
+	padding:33px 44px 19px 26px;
+}
+.avtarclass img {
+	left: -7px;
+    position: relative;
+    top: 4px;
 }
 .usersstatus .avtarclass img {
 	-webkit-border-radius:4px;
@@ -377,7 +387,9 @@ body {
 	border:1px solid #a7a7a7;
 }
 .usersstatus .avtarnamergt {
-	margin:7px 0 0 54px;
+	left: 58px;
+    margin: 10px 21px 20px -4px;
+    position: relative;
 }
 .usersstatus .avtarnamergt a {
 	font-family:'opensansregularregular';
@@ -385,6 +397,7 @@ body {
 	color:#565656;
 	line-height:18px;
 	text-decoration:none;
+	padding:27px 21px 20px 0;
 }
 .usersstatus .avtarnamergt a .fadownarrow:before {
 	display:inline-block;
@@ -652,14 +665,14 @@ aside.sleekmenuset > .mainwrappcont > .leftmenuscroll, aside.sleekmenuset > .mai
 }
 .topbluepanel .toplinkpanel li a {
 	display:block;
-	padding:0 20px 0 55px;
+	padding:0 20px 0 45px;
 	font-family:'opensansregularregular';
 	font-size:14px;
 	color:#ffffff;
 	line-height:68px;
 	text-decoration:none;
 	background-repeat:no-repeat;
-	background-position:20px 50%;
+	background-position:9px 25px;
 	text-transform:uppercase;
 }
 .topbluepanel .toplinkpanel li a:hover , .topbluepanel .toplinkpanel li a.active{
@@ -1367,11 +1380,11 @@ font-weight: normal;
 #nav li ul {
  display: none;
  position: absolute;
- left: 81%;
+ left: 87%;
  top: 100%;
  padding: 0; margin: 0;
  border:solid 1px #d4d4d4;
- width:137px;
+ width:120px;
 }
 
 #nav li:hover > ul {

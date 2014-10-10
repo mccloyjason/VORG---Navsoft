@@ -12,6 +12,7 @@
 <link href="{{STATIC_URL}}polls/responsive-layout.css" rel="stylesheet" type="text/css" />
 <script src="{{STATIC_URL}}polls/jquery.filtertable.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="{{STATIC_URL}}polls/drop/scripts_dropdown.js"></script>
+
 <style type="text/css">
 body {display:table;}
 </style>
@@ -27,7 +28,7 @@ body {display:table;}
     
     $(document).ready(function () {
         $('#cpform').bValidator(options6);
-    });
+		 });
 </script>
 </head>
 <body>
@@ -81,17 +82,17 @@ body {display:table;}
             <div class="usersstatus">
             	<div class="avtarclass"><a href="#" class="userprofill"><img src="{{STATIC_URL}}polls/images/User-default-icon.png" alt=""/></a></div>
                 <div class="avtarnamergt">
-                	<a href="#"  class="userprofill"><span>{{questions}}</span> <i class="fadownarrow"></i></a>
+                	<a href="#"><span>{{questions}}</span> <i class="fadownarrow"></i></a>
                 </div>
                 <div class="clear"></div>
                 <div class="dropdowmenu">
                 	<!--<div class="popuarrow"></div>-->
                     <ul>
-                    	<li><a href="#">Settings</a></li>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Notification</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="/home/logout/">Logout</a></li>
+                    	<li><a href="javascript:void(0);" onclick="getsettings('Settings');">{% trans "settings" %}</a></li>
+                        <li><a href="javascript:void(0);" onclick="getprofile('Profile');">{% trans "profile" %}</a></li>
+                        <li><a href="javascript:void(0);" onclick="getnotification('Notification');">{% trans "notification" %}</a></li>
+                        <li><a href="javascript:void(0);" onclick="gethelp('Help');">{% trans "help" %}</a></li>
+                        <li><a href="/home/logout/">{% trans "logout" %}</a></li>
                     </ul>
                 </div>
                 
@@ -99,47 +100,48 @@ body {display:table;}
             
             <section class="leftmenuscroll">
             <ul class="asideleftlink leftsidemenu">
-            	<li><a href="#"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-dashboard.png" alt=""/></span><span class="textname">Dashboard</span> 
-                <span class="arrowupdown">&nbsp;</span>
-                </a>
-                <div class="submenudiv">
-                	<ul class="sublistlink">
-                    	<li><a href="#"><span>System Configuration</span></a></li>
-                        <li><a href="#"><span>Alerts</span></a></li>
-                        <li><a href="#"><span>Account Info</span></a></li>
-                        <li><a href="#"><span>Activate / Deactivate Seats</span></a></li>
-                    </ul>
-                </div>
-                </li>
+            	<li><a href="javascript:void(0);" onclick="getdashboard('Dashboard');"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-dashboard.png" alt=""/></span><span class="textname">{% trans "dashboard" %}</span> 
+                 <!--<span class="arrowupdown">&nbsp;</span>
                 
-                <li><a href="javascript:void(0);" class="primaryorg"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-primaryorg.png" alt=""/></span> <span class="textname">Primary Org</span> 
+               <div class="submenudiv">
+                	<ul class="sublistlink">
+                    	<li><a href="#"><span>{% trans "system_conf" %}</span></a></li>
+                        <li><a href="#"><span>{% trans "alert" %}</span></a></li>
+                        <li><a href="#"><span>{% trans "account_info" %}</span></a></li>
+                        <li><a href="#"><span>{% trans "seats" %}</span></a></li>
+                    </ul>
+                </div>-->
+               </a> </li>
+                
+                <li><a href="javascript:void(0);" class="primaryorg"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-primaryorg.png" alt=""/></span> <span class="textname">{% trans "primary-org" %}</span> 
                 <span class="arrowupdown">&nbsp;</span>
 				</a>
 				 <div class="submenudiv">
                 	<ul class="sublistlink">
-                    	<li><a href="javascript:void(0);" onclick="getprimaryorg('Primary ORG');"><span>Primary-ORG</span></a></li>
-						<li><a href="javascript:void(0);" onclick="getadduser('Add User');"><span>Add User</span></a></li>
+                    	<li><a href="javascript:void(0);" onclick="getprimaryorg('Primary ORG');"><span>{% trans "primary_org" %}</span></a></li>
+						<li><a href="javascript:void(0);" onclick="getadduser('Add User');"><span>{% trans "add-user" %}</span></a></li>
+						<li><a href="javascript:void(0);" onclick="gethierarchy('Hierarchy');"><span>{% trans "hierarchy" %}</span></a></li>
                        
                     </ul>
                 </div>
 				</li>
                 
-                <li><a href="#" class="teamsicon"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-teams.png" alt=""/></span> <span class="textname">Teams</span> 
+                <li><a href="javascript:void(0);" onclick="getteams('Teams');" class="teamsicon"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-teams.png" alt=""/></span> <span class="textname">{% trans "teams" %}</span> 
                 </a></li>
                 
-                <li><a href="#" class="workgroup"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-workgroup.png" alt=""/></span> <span class="textname">Workgroups</span> 
+                <li><a href="javascript:void(0);" onclick="getworkgroups('Workgroups');" class="workgroup"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-workgroup.png" alt=""/></span> <span class="textname">{% trans "workgroups" %}</span> 
                 </a></li>
                 
-                <li><a href="#" class="livedocs"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-livedocs.png" alt=""/></span> <span class="textname">LiveDocs</span> 
+                <li><a href="javascript:void(0);" onclick="getlivedoc('Live Doc');" class="livedocs"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-livedocs.png" alt=""/></span> <span class="textname">{% trans "livedocs" %}</span> 
                 </a></li>
                 
-                <li><a href="#" class="documents"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-documents.png" alt=""/></span> <span class="textname">Documents</span> 
+                <li><a href="javascript:void(0);" onclick="getdocuments('Documents');" class="documents"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-documents.png" alt=""/></span> <span class="textname">{% trans "documents" %}</span> 
                 </a></li>
                 
-                <li><a href="#" class="process"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-process.png" alt=""/></span> <span class="textname">Process</span> 
+                <li><a href="javascript:void(0);" onclick="getprocess('Process');" class="process"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-process.png" alt=""/></span> <span class="textname">{% trans "process" %}</span> 
                 </a></li>
                 
-                <li><a href="#" class="channels"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-channel.png" alt=""/></span> <span class="textname">channels</span> 
+                <li><a href="javascript:void(0);" onclick="getchannels('Channels');" class="channels"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-channel.png" alt=""/></span> <span class="textname">{% trans "channels" %}</span> 
                 </a></li>
                 
                 
@@ -164,7 +166,7 @@ body {display:table;}
         	<section class="mainwrappcont">
            
             	<!--top link start here-->
-                <div class="topbluepanel">
+                <div class="topbluepanel" id="header-link-slide-box">
                 	<ul class="toplinkpanel" id="dymenu">
                     	<!--<li class="mobilwidt"><a href="#" class="mystatisicon">My Stats</a></li>
                         <li class="mobilwidt"><a href="#" class="systemstaticon">System Stats</a></li>
@@ -226,7 +228,7 @@ body {display:table;}
 		<script>
 		function getprimaryorg(str)
 		{
-			
+			$("#dymenu a.active").removeClass("active"); 
 			//alert(str);
 			$("#wait").css("display","block");
 			$(".topfityone").css({ opacity:0.1 });
@@ -234,7 +236,7 @@ body {display:table;}
 			Text = Text.replace(' ','-');
 			//alert(Text);
 			if($('#primary-org').length == 0)
-				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='showprimaryorg();'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' style='margin-top: -40px;float:right;' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='showprimaryorg();'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
 			$.ajax({
 					url:"/home/priorg/",
 					type: "POST",
@@ -254,9 +256,11 @@ body {display:table;}
 					
 					}
 				});
+				$("#primary-org a").addClass("active"); 
 		}
 		function showprimaryorg()
 		{
+			$("#dymenu a.active").removeClass("active"); 
 			$("#wait").css("display","block");
 			$(".topfityone").css({ opacity:0.1 });
 				$.ajax({
@@ -278,6 +282,7 @@ body {display:table;}
 					
 					}
 				});
+			$("#primary-org a").addClass("active"); 
 		}
 		function getadduser(str)
 		{	
@@ -321,7 +326,7 @@ body {display:table;}
 			Text = Text.replace(' ','-');
 			//alert(Text);
 			if($('#add-user').length == 0)
-				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='showadduser();'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' style='margin-top: -40px;float:right;' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='showadduser();'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
 			$.ajax({
 					url:"/home/getuser/",
 					type: "POST",
@@ -362,20 +367,416 @@ body {display:table;}
 					}
 				});
 		}
+		function getteams(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#teams').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getteams("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+				$("#teams a").addClass("active"); 
+		}
+		function getworkgroups(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#workgroups').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getworkgroups("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+				$("#workgroups a").addClass("active"); 
+		}
+		function getlivedoc(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#live-doc').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getlivedoc("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+				$("#live-doc a").addClass("active"); 
+		}
+		function getdocuments(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#documents').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getdocuments("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			$("#documents a").addClass("active"); 
+		}
+		function getprocess(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#process').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getprocess("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			$("#process a").addClass("active"); 
+		}
+		function getchannels(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#channels').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getchannels("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			$("#channels a").addClass("active"); 
+		}
+		function gethierarchy(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#hierarchy').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='gethierarchy("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			$("#hierarchy a").addClass("active"); 
+		}
+		function getdashboard(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#dashboard').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getdashboard("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			$("#dashboard a").addClass("active"); 
+		}
+		function getsettings(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#settings').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getsettings("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			$("#settings a").addClass("active"); 
+		}
+		function getprofile(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#profile').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getprofile("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			$("#profile a").addClass("active"); 
+		}
+		function getnotification(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#notification').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='getnotification("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			$("#notification a").addClass("active"); 
+		}
+		function gethelp(str)
+		{
+			$("#dymenu a.active").removeClass("active"); 
+			
+			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			Text = str.toLowerCase();
+			Text = Text.replace(' ','-');
+			//alert(Text);
+			if($('#help').length == 0)
+				$("#dymenu").append("<li id="+Text+" class='mobilwidt'><a href='javascript:void(0);' class='mystatisicon' onclick='gethelp("+'"'+str+'"'+");'>"+str+"</a><img src='{{STATIC_URL}}polls/images/close-icon.png' class='dyimg' onclick='removeli("+'"'+Text+'"'+")'/></li>");
+			$.ajax({
+					url:"/home/welcomepage/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					$("#adduser").html(response);
+					$("#adduser").show();
+					$("#primaryorg").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			$("#help a").addClass("active"); 
+		}
 		function removeli(str)
 		{
 			var ind=$("#"+str).index();
 			var ind1=ind - 1;
 			//alert(ind1);
-			
+			//alert(str);
 			$("#"+str).remove();
 			
 			if(str == "primary-org")
 				$("#primaryorg").hide();
-			if(str == "add-user")
+			if(str != "primary-org")
 				$("#adduser").hide();
 			var id=$("#dymenu li").eq(ind1).attr("id");
-			//alert(id);
+		//	alert(id);
 			$("#"+id+" a").trigger('click');
 		}
 		function getnewuser()

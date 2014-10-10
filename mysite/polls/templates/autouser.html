@@ -1,5 +1,7 @@
  <ul>
  {% for d in user%}
-<li><a href="javascript:void(0);">{{d.first_name}} {{d.last_name}}</a></li>
+ <li onClick="fill('{{d.first_name}}');"><img alt="" src="{{STATIC_URL}}polls/images/User-default-icon.png"><span>{{d.first_name}} {{d.last_name}}</span></li>
+
+
 {% endfor %}
 </ul>

@@ -30,6 +30,7 @@ urlpatterns = patterns('',
 	url(r'^getuser/$', views.getuser, name='getuser'),
 	url(r'^insertuser/$', views.insertuser, name='insertuser'),
 	url(r'^autouser/$', views.autouser, name='autouser'),
+	url(r'^welcomepage/$', views.welcomepage, name='welcomepage'),
 
 		
 	  

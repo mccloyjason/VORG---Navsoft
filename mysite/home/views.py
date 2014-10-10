@@ -128,7 +128,7 @@ def confirm_password(request,id):
 def spreadsheet_download(request):
 	import csv
 	response = HttpResponse(content_type='text/csv')
-	response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+	response['Content-Disposition'] = 'attachment; filename="vorgprimorg.csv"'
 
 	writer = csv.writer(response)
 	writer.writerow(['First Name','Last Name','username', 'role', 'email', 'report_to'])
@@ -416,5 +416,8 @@ def autouser(request):
 	first_name =request.POST['term']
 	user = user_details.objects.filter(first_name__icontains=first_name)
 	dbsa= render_to_response('autouser.html', {'user': user },context_instance=RequestContext(request))
+	return HttpResponse(dbsa)
+def welcomepage(request):
+	dbsa= render_to_response('welcomepage.html',{'data':'comming_soon'},context_instance=RequestContext(request))
 	return HttpResponse(dbsa)
 	

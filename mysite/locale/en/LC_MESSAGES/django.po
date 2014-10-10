@@ -741,3 +741,66 @@ msgstr "Last Name"
 
 msgid "uname"
 msgstr "Username"
+
+msgid "dashboard"
+msgstr "DASHBOARD"
+
+msgid "system_conf"
+msgstr "System Configuration"
+
+msgid "alert"
+msgstr "Alerts"
+
+msgid "account_info"
+msgstr "Account Info"
+
+msgid "seats"
+msgstr "Activate / Deactivate Seats"
+
+msgid "primary-org"
+msgstr "PRIMARY ORG"
+
+msgid "primary_org"
+msgstr "Primary ORG List"
+
+msgid "add-user"
+msgstr "Add User"
+
+msgid "teams"
+msgstr "TEAMS"
+
+msgid "workgroups"
+msgstr "WORKGROUPS"
+
+msgid "livedocs"
+msgstr "LIVE DOCS"
+
+msgid "documents"
+msgstr "DOCUMENTS"
+
+msgid "process"
+msgstr "PROCESS"
+
+msgid "channels"
+msgstr "CHANNELS"
+
+msgid "settings"
+msgstr "Settings"
+
+msgid "profile"
+msgstr "Profile"
+
+msgid "notification"
+msgstr "Notification"
+
+msgid "help"
+msgstr "Help"
+
+msgid "logout"
+msgstr "Logout"
+
+msgid "comming_soon"
+msgstr "Comming Soon.."
+
+msgid "hierarchy"
+msgstr "Hierarchy"

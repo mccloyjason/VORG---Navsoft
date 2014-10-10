@@ -123,8 +123,74 @@
 .custl{color:#727272;font-weight:700;}
 .addusernew{width:100%;}
 .addusernew input { /*width: 475px !important; height: 5px !important; padding-top: 12px !important; padding-bottom: 18px !important;*/ }
+.set_one {
+	
+	font-size:13px;
+	font-weight:bold;
+	margin:0px 0px 10px 0px;
+ }
+.ex7_errmsg div {
+	margin:0px;
+	    position: relative;
+		top: 68px;
+}
+.loginhgtdiv_new {
+	margin-top:10px;
+}
+.set_one_second {
+	font-size:13px;
+	font-weight:bold;
+	margin:10px 0px 0px 0px;
+}
 .addmain{box-shadow: none !important;
 	-o-box-shadow: none !important;
 	-webkit-box-shadow: none !important;
 	-moz-box-shadow: none !important;width:100% !important;}
 .errl{font-size:10px;color:red;}
+.suggestionsBox {
+		background-color: #fff;
+		border: 2px solid #ccc;
+		color: #727272;
+		margin: 7px 0 0;
+		position: absolute;
+		width: 155px;
+		z-index:99;
+	}
+	
+	.suggestionList {
+		margin: 0px;
+		padding: 0px;
+		overflow: auto; 
+		height: 160px;
+	}
+	
+	.suggestionList li {
+		
+		margin: 0px 0px 3px 0px;
+		padding: 3px;
+		cursor: pointer;
+	}
+	
+	.suggestionList li:hover {
+		background-color: #659CD8;
+	}
+	.suggestionList ul li  span {
+		margin: 0 0 0 10px;
+		position: relative;
+		top: -10px;
+	}
+	.suggestionList ul li img {
+		border: 1px solid #ccc;
+		border-radius:5px;
+		-moz-border-radius:5px;
+		-webkit-border-radius:5px;
+}
+.mobilwidt span  {
+	border:solid 1px #FFF;
+	float:left;
+	padding:3px;
+	text-align:center;
+	vertical-align:middle;
+	display:table-cell;
+}
+.dyimg{margin-top: -40px;float:right; margin-right: 5px;cursor:pointer;}
