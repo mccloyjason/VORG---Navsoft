@@ -130,7 +130,7 @@ body {
 	padding:26px 40px;
 }
 .adminloginpanel .containerpaneldiv .loginhgtdiv {
-	padding:0 0 20px;
+	padding:0 0 10px;
 }
 .adminloginpanel .containerpaneldiv .loginhgtdiv label {
 	display:block;
@@ -372,7 +372,7 @@ body {
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	border-radius:4px;
-	background: #EEFF99;
+	/*background: #EEFF99;*/
 	behavior: url(/pie/PIE.htc);
 	border:1px solid #a7a7a7;
 }
@@ -919,7 +919,7 @@ aside.sleekmenuset > .mainwrappcont > .leftmenuscroll, aside.sleekmenuset > .mai
 /* grid styles */
 .cotentitlepan_add {
 	border-bottom:1px solid #cccccc;
-	background-color:#ffffff;
+	background-color:#ffffff !important;
 	padding:20px 15px;
 	width:100%;
 }
@@ -1435,3 +1435,28 @@ font-weight: normal;
 /* 
 	Grid Dropdown Ends
 */
+/*==== Draggable========*/
+
+.draggable_scroll {
+	overflow:hidden;
+    resize: horizontal;
+    max-width: 100%;
+    max-height: 100%;
+	cursor: coll-resize;	
+}
+[draggable=true] {
+    cursor: move;
+}
+.ui-widget-content {
+	border:none !important;
+	background:none !important;
+	color:inherit !important;	
+}
+.ui-widget-header {
+	background:#b9cd6d;
+	border: 1px solid #b9cd6d;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.ui-widget-content {
+}

@@ -42,6 +42,7 @@ INSTALLED_APPS = (
 	'register',
 	'mptt',
 	'usertree',
+	'locale',
 
 )
 
@@ -53,13 +54,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	'django.middleware.locale.LocaleMiddleware'
+	'django.middleware.locale.LocaleMiddleware',
 )
 
-LOCALE_PATHS = (
-    '/Python34/Scripts/mysite/home/locale/',
-  
-)
+
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -87,8 +85,10 @@ EMAIL_USE_TLS=True
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
+LANGUAGE_CODE = 'en'
+LANGUAGES = (
+    ('en','English'),('fr','Franch'),('de', 'German')
+)
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -109,7 +109,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
 "/opt/webfiles/common",
 )
-
+LOCALE_PATHS = (
+    '/Python34/Scripts/mysite/locale/',
+)
 STATICFILES_FINDERS = ( 
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -123,11 +125,13 @@ TEMPLATE_DIRS = (
 LOGIN_URL = 'mysite_login'
 LOGOUT_URL = 'mysite_logout'
 LOGIN_REDIRECT_URL = '/'
-TEMPLATE_CONTEXT_PROCESSORS = (
+from django.conf import global_settings
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.static',
  	'django.core.context_processors.request',
+	'django.core.context_processors.i18n',
 )

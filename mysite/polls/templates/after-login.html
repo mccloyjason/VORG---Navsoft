@@ -12,7 +12,8 @@
                 
                 
             </section>
-           
+			
+          
             </section>
         </section>
         <!--section right panel end here-->
@@ -288,13 +289,17 @@
 	});
 	function listinactive(id,str)
 	{
+		$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 		$.ajax({
 			url:"/home/listinactive/"+str,
 			type: "POST",
 			data: {id: id,csrfmiddlewaretoken: '{{ csrf_token }}'},
 			success:function(response){
 			$("#primaryorg").html(response);
-					$("#primaryorg").show();
+			$("#primaryorg").show();
+			$("#wait").css("display","none");
+			$(".topfityone").css({ opacity:''});
 			},
 			complete:function(){},
 			error:function (xhr, textStatus, thrownError){
@@ -304,13 +309,17 @@
 	}
 	function listactive(id,str)
 	{
+		$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 		$.ajax({
 			url:"/home/listactive/"+str,
 			type: "POST",
 			data: {id: id,csrfmiddlewaretoken: '{{ csrf_token }}'},
 			success:function(response){
 			$("#primaryorg").html(response);
-					$("#primaryorg").show();
+			$("#primaryorg").show();
+			$("#wait").css("display","none");
+			$(".topfityone").css({ opacity:'' });
 			},
 			complete:function(){},
 			error:function (xhr, textStatus, thrownError){
@@ -319,7 +328,9 @@
 		});
 	}
 	function removelist(id)
-	{
+	{	
+		$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 		$.ajax({
 			url:"/home/removelist/",
 			type: "POST",
@@ -327,6 +338,8 @@
 			success:function(response){
 			$("#primaryorg").html(response);
 					$("#primaryorg").show();
+			$("#wait").css("display","none");
+			$(".topfityone").css({ opacity:'' });
 			},
 			complete:function(){},
 			error:function (xhr, textStatus, thrownError){
@@ -347,6 +360,8 @@
 		else{
 			var searchIDs = $("input:checkbox:checked").map(function(){
 			  //alert($(this).val());
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 			  $.ajax({
 					url:"/home/activeslt/"+str,
 					type: "POST",
@@ -355,6 +370,8 @@
 					$("#primaryorg").html(response);
 					$("#primaryorg").show();
 					counter++;
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:'' });
 					},
 					complete:function(){},
 					error:function (xhr, textStatus, thrownError){
@@ -366,9 +383,11 @@
 			
 			}
 		
+		
 	}
 	function inactiveslt(str)
 	{
+		
 		$('#selectall').removeAttr('checked');
 		var lena=$("input:checkbox:checked").length;
 		var counter = 0;
@@ -378,6 +397,8 @@
 		}
 		else{
 			var searchIDs = $("input:checkbox:checked").map(function(){
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 			  //alert($(this).val());
 			  $.ajax({
 					url:"/home/inactiveslt/"+str,
@@ -386,6 +407,8 @@
 					success:function(response){
 					$("#primaryorg").html(response);
 					$("#primaryorg").show();
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:'' });
 					},
 					complete:function(){},
 					error:function (xhr, textStatus, thrownError){
@@ -394,6 +417,7 @@
 				});
 			}).get();
 		}
+		
 		//alert('Deactivate Successfully');
 			
 		

@@ -35,7 +35,7 @@ $(document).ready(function(){
 
   function openSidepage() {
     $('#mainpage').animate({
-      right: '350px'
+      right: '230px'
     }, 400, 'easeOutBack'); 
   }
   

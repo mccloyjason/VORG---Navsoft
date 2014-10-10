@@ -14,12 +14,9 @@ from home.models import user_details
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import render_to_string
 from django.core.validators import validate_email
-from django.utils.translation import gettext
+from django.utils.translation import ugettext as _
 
 def index(request):
-	#output = gettext("Welcome")
-	#return HttpResponse(output)
-	#return render(request, 'index-r.html')
 	loginsession = request.session.get('loginsession')
 	if not loginsession:
 		return render(request, 'login.html', {'questions': loginsession })
@@ -415,3 +412,9 @@ def insertuser(request):
 	msg="Please click on link to Set password:" + request.get_host() +"/home/change_password_view/" + username
 	send_mail('Set Password-VORG', msg, 'hima.shah@navsoft.in',[email])
 	return HttpResponse('Yes')
+def autouser(request):
+	first_name =request.POST['term']
+	user = user_details.objects.filter(first_name__icontains=first_name)
+	dbsa= render_to_response('autouser.html', {'user': user },context_instance=RequestContext(request))
+	return HttpResponse(dbsa)
+	

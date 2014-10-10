@@ -1,44 +1,63 @@
+<script type="text/javascript"> 
+	var options6 = {
+        offset: {x:5, y:-2},
+        position: {x:'right', y:'center'},
+        template: '<div class="{errMsgClass}">{message}</div>',
+        showCloseIcon: false,
+        classNamePrefix: 'ex7_',
+        validateOn: 'blur'
+    };
+    $(document).ready(function () {
+        $('#cpform').bValidator(options6);
+    });
+</script>
 </head>
 
 <body>
-
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
 <div class="adminloginwrapp">
 	
     <!--admin login panel div start here-->
     <section class="adminloginpanel addmain">
     	
         <div class="containerpaneldiv addusernew">
+		<form action="#" method="post" accept-charset="utf-8" id="cpform">
 		{% csrf_token %}
 			
             	<label style="color:#FF0000">{{msg}}</label>
             
 			<span style="color:red" id="error"></span>
 			<div class="loginhgtdiv">
-            	<label for="first_name">First Name</label>
-                <input type="text"  name="first_name" id="first_name" onblur="return checkname();" value="" />
+            	<label for="first_name">{% trans "first_name" %}</label>
+                <input type="text"  name="first_name" id="first_name" data-bvalidator="required" value="" data-bvalidator-msg="Please enter First Name" />
             </div>
 			<div class="loginhgtdiv">
-            	<label for="last_name">Last Name</label>
-                <input type="text"  name="last_name" id="last_name" onblur="return checklname();" value="" />
+            	<label for="last_name">{% trans "last_name" %}</label>
+                <input type="text"  name="last_name" id="last_name" data-bvalidator="required" value="" data-bvalidator-msg="Please enter Last Name"/>
             </div>
 			<div class="loginhgtdiv">
-            	<label for="username">Username</label>
-                <input type="text"  name="username" id="username" onblur="return chkuser();" value="" />
+            	<label for="username">{% trans "uname" %}</label>
+                <input type="text"  name="username" id="username" data-bvalidator="required" onblur="return chkuser();" data-bvalidator-msg="Please enter Username" value="" />
             </div>
 			<div class="loginhgtdiv">
-            	<label for="email">Email</label>
-                <input type="text"  name="email" id="email" onblur="return checkemail();" value="" />
+            	<label for="email">{% trans "email" %}</label>
+                <input type="text"  name="email" id="email" data-bvalidator="email,required" value=""  data-bvalidator-msg="Please enter Valid Email" onblur="checkemail();"/>
             </div>
 			<div class="loginhgtdiv">
-            	<label for="role">Role</label>
-                <input type="text"  name="role" id="role" onblur="return chkrole();" value="" />
+            	<label for="role">{% trans "role" %}</label>
+                <input type="text"  name="role" id="role" data-bvalidator="required" data-bvalidator-msg="Please enter Role" value="" />
             </div>
 			<div class="loginhgtdiv">
-            	<label for="report_to">Report TO</label>
-                <input type="text"  name="report_to" id="report_to" onblur="return chkreport();" value="" />
+            	<label for="report_to">{% trans "report_to" %}</label>
+                <input type="text"  name="report_to" id="report_to" data-bvalidator="required" data-bvalidator-msg="Please enter Report To" value="" />
+				<div id="display"></div>
             </div>
             <div class="loginhgtdiv">
-            	<input type="button" value="Submit" name="submit" onclick="insertuser();" />
+            	<input type="button" value="Submit" name="submit" id="submit" onclick="return insertuser();" class="page_btn" />
+				<div id="load" style="display:none;"><img src='{{STATIC_URL}}polls/images/ajax-load-black.gif'/></div>
                 <div class="clear"></div>
             </div>
 			
@@ -50,6 +69,25 @@
 
 </div>
 <script type="text/javascript"> 
+$(document).ready(function(){
+	$("#report_to").keyup(function() 
+	{
+		var searchbox = $(this).val();
+		$.ajax({
+			url:"/home/autouser/",
+			type: "POST",
+			data: {term: searchbox,csrfmiddlewaretoken: '{{ csrf_token }}'},
+			success:function(response){
+			$("#display").html(response).show();
+
+			},
+			complete:function(){},
+			error:function (xhr, textStatus, thrownError){
+
+			}
+		});
+	});
+});
 	function checkname()
 	{
 		var name;
@@ -59,6 +97,7 @@
 			$('#error').html('Please enter First Name!');
 			 //setTimeout(function() {
 				$("#first_name").focus();
+			$('#error').delay(3200).fadeOut(300);
 			//}, 0);
 			return false;
 		}
@@ -76,7 +115,7 @@
 		{
 			$('#error').html('Please enter Last Name!');
 			 $("#last_name").focus();
-			
+			$('#error').delay(3200).fadeOut(300);
 			return false;
 		}
 		else{
@@ -86,17 +125,7 @@
 	}
 	function chkuser()
 	{
-		var username
-		username = $("#username").val();
-		if(username == "")
-		{
-			$('#error').html('Please enter Username!');
-			$('#username').focus();
-			
-			return false;
-		}
-		else
-		{
+		
 			$.ajax({
 			url:"/register/chk_user/",
 			type: "POST",
@@ -107,7 +136,7 @@
 				else
 					$('#error').html('Username Already Exist!');
 					$('#username').focus();
-					
+					$('#error').delay(3200).fadeOut(300);
 					return false;
 			},
 			complete:function(){},
@@ -115,24 +144,13 @@
 			
 			}
 			});
-		}
+		
 		
 		
 	}
 	function checkemail()
 	{
-		var email;
-		email = $("#email").val();
-		var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
-		if(email == "" || !re.test(email))
-		{
-			$('#error').html('Please enter Valid Email Address!');
-			$('#email').focus();
-			
-			return false;
-		}
 		
-		else{
 			$.ajax({
 				url:"/register/chk_email/",
 				type: "POST",
@@ -143,7 +161,7 @@
 					else
 						$('#error').html('Email Already Exist!');
 						$('#email').focus();
-						
+						$('#error').delay(3200).fadeOut(300);
 						return false;
 				},
 				complete:function(){},
@@ -151,7 +169,7 @@
 				
 				}
 			});
-		}
+		
 			
 	}
 	function chkrole ()
@@ -162,7 +180,7 @@
 		{
 			$('#error').html('Please enter Role of user!');
 			$('#role').focus();
-			
+			$('#error').delay(3200).fadeOut(300);
 			return false;
 		}
 		
@@ -179,7 +197,7 @@
 		{
 			$('#error').html('Please enter Report TO!');
 			$('#report_to').focus();
-			
+			$('#error').delay(3200).fadeOut(300);
 			return false;
 		}
 		
@@ -196,6 +214,8 @@
 		{
 			$('#error').html('Please enter First Name!');
 			$("#first_name").focus();
+			$('#error').delay(3200).fadeOut(300);
+			return false;
 		}
 		var name;
 		name = $("#last_name").val();
@@ -203,6 +223,8 @@
 		{
 			$('#error').html('Please enter Last Name!');
 			$("#last_name").focus();
+			$('#error').delay(3200).fadeOut(300);
+			return false;
 		}
 		var username
 		username = $("#username").val();
@@ -210,6 +232,8 @@
 		{
 			$('#error').html('Please enter Username!');
 			$('#username').focus();
+			$('#error').delay(3200).fadeOut(300);
+			return false;
 		}
 		var email;
 		email = $("#email").val();
@@ -218,6 +242,8 @@
 		{
 			$('#error').html('Please enter Valid Email Address!');
 			$('#email').focus();
+			$('#error').delay(3200).fadeOut(300);
+			return false;
 		}
 		var role;
 		role = $("#role").val();
@@ -225,6 +251,8 @@
 		{
 			$('#error').html('Please enter Role of user!');
 			$('#role').focus();
+			$('#error').delay(3200).fadeOut(300);
+			return false;
 		}
 		var report;
 		report = $("#report_to").val();
@@ -232,19 +260,30 @@
 		{
 			$('#error').html('Please enter Report TO!');
 			$('#report_to').focus();
+			$('#error').delay(3200).fadeOut(300);
+			return false;
 		}
+		
+		
 		var first_name = $("#first_name").val();
 		var last_name = $("#last_name").val();
 		var username = $("#username").val();
 		var email = $("#email").val();
 		var role = $("#role").val();
 		var report_to = $("#report_to").val();
+		$("#load").show();
+		$("#submit").attr("disabled", true);
 		$.ajax({
 			url:"/home/insertuser/",
 			type: "POST",
 			data: {first_name: first_name,last_name:last_name,username:username,email:email,role:role,report_to:report_to,csrfmiddlewaretoken: '{{ csrf_token }}'},
 			success:function(response){
+				$('#aboutright').hide();
+				$(".topfityone").css('width','100%');
+				$("#load").hide();
+				
 				$("#primary-org a").trigger('click');
+				return true;
 			},
 			complete:function(){},
 			error:function (xhr, textStatus, thrownError){

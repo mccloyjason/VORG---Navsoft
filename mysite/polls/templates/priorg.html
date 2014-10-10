@@ -1,3 +1,8 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+
 <div class="gridTop">
 							  <ul>
 								<li style="border-left:none;">
@@ -39,7 +44,7 @@
 								  <th><input type="checkbox"  id="selectall" class="re_magin" style="margin-left:14px;"/></th>
 								  <th>
                       	<ul id="nav">
-							<li><a href="#">Name</a>
+							<li><a href="#">{% trans "name" %}</a>
                             	<ul>
                                 	<li><a href="javascript:void(0);" onclick="sortorder('username','?page={{page}}')">Sort Ascending</a></li>
                                     <li><a href="javascript:void(0);" onclick="sortorder('-username','?page={{page}}')">Sort Descending </a></li>
@@ -65,7 +70,7 @@
                       </th>
 					  <th class="numeric">
                       <ul id="nav">
-							<li><a href="#">Role</a>
+							<li><a href="#">{% trans "role" %}</a>
                             	<ul>
                                 	<li><a href="javascript:void(0);" onclick="sortorder('role','?page={{page}}')">Sort Ascending</a></li>
                                     <li><a href="javascript:void(0);" onclick="sortorder('-role','?page={{page}}')">Sort Descending </a></li>
@@ -92,7 +97,7 @@
                       </th>
 					  <th class="numeric">
                       <ul id="nav">
-							<li><a href="#">Report To</a>
+							<li><a href="#">{% trans "report_to" %}</a>
                             	<ul>
                                 	<li><a href="javascript:void(0);" onclick="sortorder('report_to','?page={{page}}')">Sort Ascending</a></li>
                                     <li><a href="javascript:void(0);" onclick="sortorder('-report_to','?page={{page}}')">Sort Descending </a></li>
@@ -119,7 +124,7 @@
                       </th>
 					  <th class="numeric">
                       <ul id="nav">
-							<li><a href="#">Email</a>
+							<li><a href="#">{% trans "email" %}</a>
                             	<ul>
                                 	<li><a href="javascript:void(0);" onclick="sortorder('email','?page={{page}}')">Sort Ascending</a></li>
                                     <li><a href="javascript:void(0);" onclick="sortorder('-email','?page={{page}}')">Sort Descending </a></li>
@@ -146,7 +151,7 @@
                       </th>
 					  <th class="numeric">
                       <ul id="nav">
-							<li><a href="#">Creation Date</a>
+							<li><a href="#">{% trans "creation_date" %}</a>
                             	<ul>
                                 	<li><a href="javascript:void(0);" onclick="sortorder('date','?page={{page}}')">Sort Ascending</a></li>
                                     <li><a href="javascript:void(0);" onclick="sortorder('-date','?page={{page}}')">Sort Descending </a></li>
@@ -173,7 +178,7 @@
                       </th>
 					  <th class="numeric">
                       <ul id="nav">
-							<li><a href="#">Status</a>
+							<li><a href="#">{% trans "status" %}</a>
                             	<ul>
                                 	<li><a href="javascript:void(0);" onclick="sortorder('status','?page={{page}}')">Sort Ascending</a></li>
                                     <li><a href="javascript:void(0);" onclick="sortorder('-status','?page={{page}}')">Sort Descending </a></li>
@@ -198,7 +203,7 @@
                             </li>
                         </ul>
                       </th>
-					  <th style="padding-left: 11px;">Actions</th>
+					  <th style="padding-left: 11px;">{% trans "actions" %}</th>
 							  </tr>
 						  </thead>
 						  <tbody>
@@ -286,6 +291,8 @@
 	
 function getpg(str)
 {
+		$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 		$.ajax({
 					url:"/home/priorg/"+str,
 					type: "POST",
@@ -294,6 +301,8 @@ function getpg(str)
 					//alert(response);
 					$("#primaryorg").html(response);
 					$("#primaryorg").show();
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:'' });
 					},
 					complete:function(){},
 					error:function (xhr, textStatus, thrownError){
@@ -303,6 +312,8 @@ function getpg(str)
 }
 function sortorder(order,str)
 {
+	$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 	$.ajax({
 					url:"/home/priorgdy/"+str,
 					type: "POST",
@@ -311,6 +322,8 @@ function sortorder(order,str)
 					//alert(response);
 					$("#primaryorg").html(response);
 					$("#primaryorg").show();
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:'' });
 					},
 					complete:function(){},
 					error:function (xhr, textStatus, thrownError){

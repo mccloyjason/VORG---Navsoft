@@ -2,6 +2,7 @@ from django.conf.urls import patterns, url
 from django.conf import settings
 from django.conf.urls.static import static
 from home import views
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = patterns('',
 	url(r'^$', views.index, name='index'),
@@ -28,6 +29,7 @@ urlpatterns = patterns('',
 	url(r'^priorgdy/$', views.priorgdy, name='priorgdy'),
 	url(r'^getuser/$', views.getuser, name='getuser'),
 	url(r'^insertuser/$', views.insertuser, name='insertuser'),
+	url(r'^autouser/$', views.autouser, name='autouser'),
 
 		
 	  

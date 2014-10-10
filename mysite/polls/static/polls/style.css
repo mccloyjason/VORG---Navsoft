@@ -118,11 +118,13 @@
 		  background-color: #FFFFFF;
 		}
 .ex6_errmsg{visibility: visible; left: 200px !important; position: relative !important; top: -63.733px !important; color: red;}
+.ex7_errmsg{visibility: visible; left: 0px !important; position: relative !important; top: -63.733px !important; color: red;}
 .almem{color: #868686;font-family: "opensansregularregular";font-size: 12px;line-height: 47px;}
 .custl{color:#727272;font-weight:700;}
 .addusernew{width:100%;}
-.addusernew input { width: 475px !important; height: 21px !important; padding-top: 15px !important; padding-bottom: 15px !important; }
+.addusernew input { /*width: 475px !important; height: 5px !important; padding-top: 12px !important; padding-bottom: 18px !important;*/ }
 .addmain{box-shadow: none !important;
 	-o-box-shadow: none !important;
 	-webkit-box-shadow: none !important;
 	-moz-box-shadow: none !important;width:100% !important;}
+.errl{font-size:10px;color:red;}

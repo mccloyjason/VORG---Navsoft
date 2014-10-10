@@ -11,16 +11,13 @@ jQuery(document).ready(function(){
 	});
 	
 	// left menu css 
-	/*jQuery(".submenudiv").hide()
+	jQuery(".submenudiv").hide()
 	jQuery(".asideleftlink li a").click(function() {
 	jQuery(".submenudiv").toggle(500);
 	jQuery(".asideleftlink li a .arrowupdown").toggleClass("arrowdown")
-	});*/
-	
-	jQuery(".asideleftlink li").click(function() {
-		jQuery(this).find(".submenudiv").toggle(500);
-		//jQuery(".asideleftlink li a .arrowupdown").toggleClass("arrowdown")
 	});
+	
+	
 	
 	// users dropdown css 
 	jQuery(".dropdowmenu").hide()
@@ -47,10 +44,5 @@ jQuery(document).ready(function(){
 	jQuery(".morebsublinkdiv").toggle(500);
 	});
 	
-	
-	//jQuery("#dack_menu").click(function() {
-	//jQuery("#dack_sub").toggle(500);
-	
-	//});
 	
 });

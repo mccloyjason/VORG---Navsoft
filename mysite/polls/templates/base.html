@@ -2,6 +2,7 @@
 <head>
 <title>Welcome to Vorg</title>
 <link href="{{STATIC_URL}}polls/style.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="{{STATIC_URL}}polls/images/favicon.ico" type="image/png">
 <link href="{{STATIC_URL}}polls/reset.css" rel="stylesheet" type="text/css" />
 <link href="{{STATIC_URL}}polls/screen.css" rel="stylesheet" type="text/css" />
 <script src="{{STATIC_URL}}polls/jquery.min.js" type="text/javascript"></script>
@@ -30,11 +31,16 @@ body {display:table;}
 </script>
 </head>
 <body>
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+
 <section class="mainwrappcont">
 	
     <!--Header start here-->
     <header id="headfixbar">
-    	<div class="toplogopanel"><img src="{{STATIC_URL}}polls/admin-logo.png" alt=""/></div>
+    	<div class="toplogopanel"><a href="/"><img src="{{STATIC_URL}}polls/admin-logo.png" alt=""/></a></div>
         <a href="#" class="navmobile"></a>
         <div class="toplinkpanel">
         	<ul class="linkrightpanel">
@@ -65,19 +71,21 @@ body {display:table;}
     
     <!--content panel start here-->
     <section>
+	
     <section class="maincontentbox">
-    
+   
     	<!--aside left panel start here-->
         <aside class="leftmenpan hiddendiv sleekmenuset">
         	<section class="mainwrappcont">
+
             <div class="usersstatus">
-            	<div class="avtarclass"><a href="#" class="userprofill"><img src="{{STATIC_URL}}polls/images/pic-avatarimg.png" alt=""/></a></div>
+            	<div class="avtarclass"><a href="#" class="userprofill"><img src="{{STATIC_URL}}polls/images/User-default-icon.png" alt=""/></a></div>
                 <div class="avtarnamergt">
                 	<a href="#"  class="userprofill"><span>{{questions}}</span> <i class="fadownarrow"></i></a>
                 </div>
                 <div class="clear"></div>
                 <div class="dropdowmenu">
-                	<div class="popuarrow"></div>
+                	<!--<div class="popuarrow"></div>-->
                     <ul>
                     	<li><a href="#">Settings</a></li>
                         <li><a href="#">Profile</a></li>
@@ -104,12 +112,13 @@ body {display:table;}
                 </div>
                 </li>
                 
-                <li><a href="javascript:void(0);" onclick="getprimaryorg('Primary ORG');" class="primaryorg"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-primaryorg.png" alt=""/></span> <span class="textname">Primary Org</span> 
+                <li><a href="javascript:void(0);" class="primaryorg"><span class="iconspan"><img src="{{STATIC_URL}}polls/images/icon-primaryorg.png" alt=""/></span> <span class="textname">Primary Org</span> 
                 <span class="arrowupdown">&nbsp;</span>
 				</a>
 				 <div class="submenudiv">
                 	<ul class="sublistlink">
-                    	<li><a href="javascript:void(0);" onclick="getadduser('Add User');"><span>Add User</span></a></li>
+                    	<li><a href="javascript:void(0);" onclick="getprimaryorg('Primary ORG');"><span>Primary-ORG</span></a></li>
+						<li><a href="javascript:void(0);" onclick="getadduser('Add User');"><span>Add User</span></a></li>
                        
                     </ul>
                 </div>
@@ -139,8 +148,8 @@ body {display:table;}
             
             <div class="asidefooterpan">
             	<ul class="footerlinklist">
-                	<li><a href="/home/logout/" class="logoffcls">&nbsp;</a></li>
-                    <li><a href="#" class="menupanl menuicons">&nbsp;</a></li>
+                	<li><a href="/home/logout/" class="logoffcls" title="logout">&nbsp;</a></li>
+                    <li><a href="#" class="menupanl menuicons" title="collapse-expand">&nbsp;</a></li>
                 </ul>
             </div>
             </section>
@@ -150,8 +159,10 @@ body {display:table;}
         
         <!--section right panel start here-->
         <section class="">
+		 <div id="wait" style="display:none;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
+   <img src='{{STATIC_URL}}polls/images/ajax-loader.gif'/></div>
         	<section class="mainwrappcont">
-            
+           
             	<!--top link start here-->
                 <div class="topbluepanel">
                 	<ul class="toplinkpanel" id="dymenu">
@@ -182,7 +193,11 @@ body {display:table;}
                 
                 </div>
                 <!--top link end here-->
-                
+                <div id="aboutright" style="display:none;float: right; width: 19%;position: relative;z-index: 9999;">
+					
+ 
+					
+				</div>
                 <section class="topfityone">
                 	<section class="cotentitlepanl">
                     	<!--<ul id="dymenu"></ul>-->
@@ -213,6 +228,8 @@ body {display:table;}
 		{
 			
 			//alert(str);
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 			Text = str.toLowerCase();
 			Text = Text.replace(' ','-');
 			//alert(Text);
@@ -227,6 +244,10 @@ body {display:table;}
 					$("#primaryorg").html(response);
 					$("#primaryorg").show();
 					$("#adduser").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:''});
 					},
 					complete:function(){},
 					error:function (xhr, textStatus, thrownError){
@@ -236,6 +257,8 @@ body {display:table;}
 		}
 		function showprimaryorg()
 		{
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 				$.ajax({
 					url:"/home/priorg/",
 					type: "POST",
@@ -245,6 +268,10 @@ body {display:table;}
 					$("#primaryorg").html(response);
 					$("#primaryorg").show();
 					$("#adduser").hide();
+					$("#aboutright").hide();
+					$(".topfityone").css('width','100%');
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:'' });
 					},
 					complete:function(){},
 					error:function (xhr, textStatus, thrownError){
@@ -252,9 +279,43 @@ body {display:table;}
 					}
 				});
 		}
-	
 		function getadduser(str)
+		{	
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
+			$.ajax({
+					url:"/home/getuser/",
+					type: "POST",
+					data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+					success:function(response){
+					//alert(response);
+					//$("#primaryorg").hide();
+					$("#aboutright").html(response);
+					//$("#adduser").show();
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:'' });
+					},
+					complete:function(){},
+					error:function (xhr, textStatus, thrownError){
+					
+					}
+				});
+			    var effect = 'slide';
+
+				// Set the options for the effect type chosen
+				var options = '';
+
+				// Set the duration (default: 400 milliseconds)
+				var duration = 2500;
+
+			$('#aboutright').toggle(effect, options, duration);
+			//$("#aboutright").toggle( "slide" );
+			$(".topfityone").css('width','80%');
+		}
+		function getadduser1(str)
 		{
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 			//alert(str);
 			Text = str.toLowerCase();
 			Text = Text.replace(' ','-');
@@ -270,6 +331,8 @@ body {display:table;}
 					$("#primaryorg").hide();
 					$("#adduser").html(response);
 					$("#adduser").show();
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:'' });
 					},
 					complete:function(){},
 					error:function (xhr, textStatus, thrownError){
@@ -279,6 +342,8 @@ body {display:table;}
 		}
 		function showadduser()
 		{
+			$("#wait").css("display","block");
+			$(".topfityone").css({ opacity:0.1 });
 			$.ajax({
 					url:"/home/getuser/",
 					type: "POST",
@@ -288,6 +353,8 @@ body {display:table;}
 					$("#primaryorg").hide();
 					$("#adduser").html(response);
 					$("#adduser").show();
+					$("#wait").css("display","none");
+					$(".topfityone").css({ opacity:'' });
 					},
 					complete:function(){},
 					error:function (xhr, textStatus, thrownError){
