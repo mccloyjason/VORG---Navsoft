@@ -420,4 +420,31 @@ def autouser(request):
 def welcomepage(request):
 	dbsa= render_to_response('welcomepage.html',{'data':'comming_soon'},context_instance=RequestContext(request))
 	return HttpResponse(dbsa)
+def hierarchy(request):
+	import json
+
+	links = [("Tom","Dick"),("Dick","Harry"),("Tom","Larry"),("Bob","Leroy"),("Bob","Earl")]
+	parents, children = zip(*links)
+	root_nodes = {x for x in parents if x not in children}
+	for node in root_nodes:
+		links.append(('Root', node))
+
+	def get_nodes(node):
+		d = {}
+		d['name'] = node
+		children = get_children(node)
+		if children:
+			d['children'] = [get_nodes(child) for child in children]
+		return d
+
+	def get_children(node):
+		return [x[1] for x in links if x[0] == node]
+
+	tree = get_nodes('Root')
+	json_data=json.dumps(tree, indent=4)
+	#return HttpResponse(json_data)
+	#return HttpResponse(json.loads(json_data))
 	
+	#print json.dumps(tree, indent=4)
+	loginsession = request.session.get('loginsession')
+	return render(request, 'hierarchy.html', {'questions': json.loads(json_data)})

@@ -31,6 +31,7 @@ urlpatterns = patterns('',
 	url(r'^insertuser/$', views.insertuser, name='insertuser'),
 	url(r'^autouser/$', views.autouser, name='autouser'),
 	url(r'^welcomepage/$', views.welcomepage, name='welcomepage'),
+	url(r'^hierarchy/$', views.hierarchy, name='hierarchy'),
 
 		
 	  
